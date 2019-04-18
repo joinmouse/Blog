@@ -8,7 +8,10 @@
 
 [JavaScript之执行上下文](https://github.com/joinmouse/Blog/issues/3)
 
+[JavaScript之原型到原型链](https://github.com/joinmouse/Blog/issues/6)
+
 [JavaScript之Event Loop](https://github.com/joinmouse/Blog/issues/5)
+
 
 
 
