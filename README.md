@@ -12,6 +12,8 @@
 
 [JavaScript之Event Loop](https://github.com/joinmouse/Blog/issues/5)
 
+[JavaScript之数组去重引发的思考 ](https://github.com/joinmouse/Blog/issues/7)
+
 
 
 
