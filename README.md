@@ -10,6 +10,10 @@
 
 [JavaScript之原型到原型链](https://github.com/joinmouse/Blog/issues/6)
 
+[JavaScript之Promise对象](https://github.com/joinmouse/Blog/issues/8)
+
+[JavaScript之Promise问答](https://github.com/joinmouse/Blog/issues/9)
+
 [JavaScript之Event Loop](https://github.com/joinmouse/Blog/issues/5)
 
 [JavaScript之数组去重引发的思考 ](https://github.com/joinmouse/Blog/issues/7)
