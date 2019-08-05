@@ -19,8 +19,17 @@
 [JavaScript之数组去重引发的思考 ](https://github.com/joinmouse/Blog/issues/7)
 
 
+### Vue 深入响应式原理
+[Vue 深入响应式原理(一)](https://github.com/joinmouse/Blog/issues/10)
 
+[Vue 深入响应式原理(二)](https://github.com/joinmouse/Blog/issues/11)
 
-#### 前端路由介绍及自制路由
+[Vue 深入响应式原理(三)](https://github.com/joinmouse/Blog/issues/12)
+
+[Vue 深入响应式原理(四)](https://github.com/joinmouse/Blog/issues/13)
+
+### 前端路由介绍及自制路由
 [前端路由的详细介绍](https://github.com/joinmouse/Blog/issues/4)
+
+
 
