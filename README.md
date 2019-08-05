@@ -24,6 +24,12 @@
 
 [TypeScript基本类型(下)](https://github.com/joinmouse/Blog/issues/15)
 
+[TypeScript接口(一)](https://github.com/joinmouse/Blog/issues/16)
+
+[TypeScript接口(二)](https://github.com/joinmouse/Blog/issues/17)
+
+[TypeScript接口(三)](https://github.com/joinmouse/Blog/issues/18)
+
 
 ### Vue 深入响应式原理
 [Vue 深入响应式原理(一)](https://github.com/joinmouse/Blog/issues/10)
