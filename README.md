@@ -20,6 +20,9 @@
 
 
 ### TypeScript
+[TypeScript基本类型(上)](https://github.com/joinmouse/Blog/issues/14)
+
+[TypeScript基本类型(下)](https://github.com/joinmouse/Blog/issues/15)
 
 
 ### Vue 深入响应式原理
