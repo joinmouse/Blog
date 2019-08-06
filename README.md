@@ -19,7 +19,7 @@
 [JavaScript之数组去重引发的思考 ](https://github.com/joinmouse/Blog/issues/7)
 
 
-### TypeScript
+### TypeScript类型系统
 [TypeScript基本类型(上)](https://github.com/joinmouse/Blog/issues/14)
 
 [TypeScript基本类型(下)](https://github.com/joinmouse/Blog/issues/15)
@@ -33,6 +33,10 @@
 [TypeScript函数(上)](https://github.com/joinmouse/Blog/issues/19)
 
 [TypeScript函数(下)](https://github.com/joinmouse/Blog/issues/20)
+
+[TypeScript类(上)](https://github.com/joinmouse/Blog/issues/21)
+
+[TypeScript类(下)](https://github.com/joinmouse/Blog/issues/22)
 
 
 ### Vue 深入响应式原理
