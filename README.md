@@ -38,6 +38,10 @@
 
 [TypeScript类(下)](https://github.com/joinmouse/Blog/issues/22)
 
+[TypeScript泛型(上)](https://github.com/joinmouse/Blog/issues/23)
+
+[TypeScript泛型(上)](https://github.com/joinmouse/Blog/issues/24)
+
 
 ### Vue 深入响应式原理
 [Vue 深入响应式原理(一)](https://github.com/joinmouse/Blog/issues/10)
