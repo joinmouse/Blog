@@ -30,6 +30,10 @@
 
 [TypeScript接口(三)](https://github.com/joinmouse/Blog/issues/18)
 
+[TypeScript函数(上)](https://github.com/joinmouse/Blog/issues/19)
+
+[TypeScript函数(下)](https://github.com/joinmouse/Blog/issues/20)
+
 
 ### Vue 深入响应式原理
 [Vue 深入响应式原理(一)](https://github.com/joinmouse/Blog/issues/10)
