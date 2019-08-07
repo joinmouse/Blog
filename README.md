@@ -18,6 +18,8 @@
 
 [JavaScript之数组去重引发的思考 ](https://github.com/joinmouse/Blog/issues/7)
 
+[理解JavaScript函数调用和"this"](https://github.com/joinmouse/Blog/issues/25)
+
 
 ### TypeScript类型系统
 [TypeScript基本类型(上)](https://github.com/joinmouse/Blog/issues/14)
