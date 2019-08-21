@@ -8,6 +8,8 @@
 
 [JavaScript之执行上下文](https://github.com/joinmouse/Blog/issues/3)
 
+[JavaScript之解读闭包(Closure)](https://github.com/joinmouse/Blog/issues/26)
+
 [JavaScript之原型到原型链](https://github.com/joinmouse/Blog/issues/6)
 
 [JavaScript之Promise对象](https://github.com/joinmouse/Blog/issues/8)
