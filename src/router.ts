@@ -5,7 +5,7 @@ import Tag from './pages/Tag.vue';
 import About from './pages/About.vue';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/posts/:slug', name: 'post', component: Post, props: true },
