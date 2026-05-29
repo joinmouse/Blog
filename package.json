@@ -8,7 +8,8 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=blog --branch=master --commit-dirty=true"
   },
   "dependencies": {
     "vue": "^3.5.35",
@@ -27,6 +28,7 @@
     "unplugin-vue-markdown": "^32.0.0",
     "vite": "^8.0.14",
     "vitest": "^4.1.7",
-    "vue-tsc": "^3.3.2"
+    "vue-tsc": "^3.3.2",
+    "wrangler": "^4.95.0"
   }
 }
