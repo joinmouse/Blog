@@ -7,7 +7,10 @@ describe('Tag page', () => {
   it('shows posts matching the tag in the URL', async () => {
     const router = createRouter({
       history: createMemoryHistory(),
-      routes: [{ path: '/tags/:tag', component: Tag, props: true }],
+      routes: [
+        { path: '/tags/:tag', component: Tag, props: true },
+        { path: '/:pathMatch(.*)*', component: { template: '<div />' } },
+      ],
     });
     router.push('/tags/TypeScript');
     await router.isReady();
@@ -24,7 +27,10 @@ describe('Tag page', () => {
   it('shows zero posts for an unknown tag', async () => {
     const router = createRouter({
       history: createMemoryHistory(),
-      routes: [{ path: '/tags/:tag', component: Tag, props: true }],
+      routes: [
+        { path: '/tags/:tag', component: Tag, props: true },
+        { path: '/:pathMatch(.*)*', component: { template: '<div />' } },
+      ],
     });
     router.push('/tags/NoSuchTag');
     await router.isReady();

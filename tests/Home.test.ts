@@ -6,7 +6,7 @@ import Home from '../src/pages/Home.vue';
 function makeRouter() {
   return createRouter({
     history: createMemoryHistory(),
-    routes: [{ path: '/:any(.*)', component: { template: '<div />' } }],
+    routes: [{ path: '/:pathMatch(.*)*', component: { template: '<div />' } }],
   });
 }
 

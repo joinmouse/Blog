@@ -8,7 +8,7 @@ function makeRouter() {
     history: createMemoryHistory(),
     routes: [
       { path: '/posts/:slug', component: Post, props: true },
-      { path: '/', component: { template: '<div />' } },
+      { path: '/:pathMatch(.*)*', component: { template: '<div />' } },
     ],
   });
 }
