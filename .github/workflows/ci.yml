@@ -1,4 +1,4 @@
-name: CI & Deploy
+name: CI
 
 on:
   push:
@@ -8,10 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    outputs:
-      should-deploy: ${{ steps.check.outputs.should-deploy }}
     steps:
       - uses: actions/checkout@v4
 
@@ -29,39 +27,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-          retention-days: 7
-
-      - name: Should deploy?
-        id: check
-        run: |
-          if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/master" ]; then
-            echo "should-deploy=true" >> $GITHUB_OUTPUT
-          else
-            echo "should-deploy=false" >> $GITHUB_OUTPUT
-          fi
-
-  deploy:
-    needs: build
-    if: needs.build.outputs.should-deploy == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=blog --branch=master --commit-dirty=true
