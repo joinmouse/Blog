@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "fetch:issues": "node scripts/fetch-issues.mjs"
+    "preview": "vite preview"
   },
   "dependencies": {
     "vue": "^3.5.35",
