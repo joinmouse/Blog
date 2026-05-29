@@ -2,7 +2,7 @@
 title: "JavaScript之Promise问答"
 date: 2019-04-30
 issue_number: 9
-tags: []
+tags: ["JS深入浅出"]
 state: open
 source: "https://github.com/joinmouse/Blog/issues/9"
 ---

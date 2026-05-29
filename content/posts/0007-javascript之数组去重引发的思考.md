@@ -2,7 +2,7 @@
 title: "JavaScript之数组去重引发的思考"
 date: 2019-04-29
 issue_number: 7
-tags: []
+tags: ["JS深入浅出"]
 state: open
 source: "https://github.com/joinmouse/Blog/issues/7"
 ---
