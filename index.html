@@ -11,30 +11,6 @@
       rel="stylesheet"
     />
     <title>Blog</title>
-    <script>
-      // Restore SPA path that 404.html encoded into ?p=…
-      (function () {
-        var l = window.location;
-        if (l.search.indexOf('?p=') === 0 || l.search.indexOf('&p=') !== -1) {
-          var q = {};
-          l.search
-            .slice(1)
-            .split('&')
-            .forEach(function (kv) {
-              var i = kv.indexOf('=');
-              if (i > -1) q[kv.slice(0, i)] = kv.slice(i + 1).replace(/~and~/g, '&');
-            });
-          if (q.p !== undefined) {
-            var newUrl =
-              l.pathname.replace(/\/$/, '') +
-              q.p +
-              (q.q ? '?' + q.q : '') +
-              l.hash;
-            window.history.replaceState(null, '', newUrl);
-          }
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="app"></div>

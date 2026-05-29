@@ -11,7 +11,7 @@ export default defineConfig(async () => {
   });
 
   return {
-    base: '/Blog/',
+    base: '/',
     plugins: [
       vue({ include: [/\.vue$/, /\.md$/] }),
       Markdown({
