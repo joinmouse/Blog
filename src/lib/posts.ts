@@ -15,7 +15,6 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
-  issueNumber: number;
   tags: string[];
   source?: string;
 }
@@ -28,22 +27,21 @@ const modules = import.meta.glob<MarkdownModule>('/content/posts/*.md', { eager:
 
 const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   const fm = mod.frontmatter || {};
-  const issueNumber = Number(fm.issue_number) || 0;
-  // URL slug = issue number, e.g. /posts/26
-  const slug = String(issueNumber);
+  // 从文件名提取前缀数字作为 slug，例如 0001-xxx.md -> "0001"
+  const filename = filepath.split('/').pop() || '';
+  const slug = filename.replace(/^(\d+)-.*\.md$/, '$1');
   return {
     slug,
     title: fm.title || slug,
     date: fm.date || '',
-    issueNumber,
     tags: Array.isArray(fm.tags) ? fm.tags : [],
     source: fm.source,
     component: mod.default,
   };
 });
 
-// Sort by issue_number desc (newest = highest issue number)
-posts.sort((a, b) => b.issueNumber - a.issueNumber);
+// Sort by slug desc (newest = highest number)
+posts.sort((a, b) => b.slug.localeCompare(a.slug));
 
 export function getAllPosts(): PostMeta[] {
   return posts.map(({ component, ...meta }) => meta);

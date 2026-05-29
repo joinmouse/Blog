@@ -19,9 +19,7 @@ function formatDate(d: string): string {
 <template>
   <RouterLink :to="`/posts/${post.slug}`" class="card">
     <div class="row">
-      <h3 class="title">
-        <span class="num">{{ String(post.issueNumber).padStart(2, '0') }}、</span>{{ post.title }}
-      </h3>
+      <h3 class="title">{{ post.title }}</h3>
       <time class="date" :datetime="post.date">{{ formatDate(post.date) }}</time>
     </div>
     <div v-if="post.tags.length" class="tags">
@@ -66,15 +64,7 @@ function formatDate(d: string): string {
   min-width: 0;
   line-height: 1.4;
 }
-.num {
-  color: var(--text-faint);
-  font-variant-numeric: tabular-nums;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-.card:hover .num {
-  color: var(--accent);
-}
+
 .date {
   font-family: var(--font-mono);
   font-size: 12px;

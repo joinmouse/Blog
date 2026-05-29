@@ -34,11 +34,10 @@ function formatDate(d: string): string {
 
       <div class="meta">
         <time :datetime="post.date" class="date">{{ formatDate(post.date) }}</time>
-        <span class="dot">·</span>
+        <span v-if="post.source" class="dot">·</span>
         <a v-if="post.source" :href="post.source" target="_blank" rel="noopener" class="src">
-          Issue #{{ post.issueNumber }} ↗
+          GitHub ↗
         </a>
-        <span v-else>Issue #{{ post.issueNumber }}</span>
       </div>
     </header>
 
