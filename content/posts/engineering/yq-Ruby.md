@@ -5,21 +5,47 @@ tags: ["语雀"]
 source_kind: yuque
 ---
 
-’s rubygems, 
-Node.js’ npm, or Cocoa’s CocoaPods and Carthage）可以更好的 handle 类似的功能。
-主仓库项目的合作者并不会 自动地看到子模块仓库的更新通知的。所以，更新子模块后一定要
-记得提醒一下主仓库项目的合作者 git submodule update。最后的话
-- 
-- $ git rm --cached  GWToolkit
-$ rm -rf GWToolkit1
-Bash
-[submodule "GWToolkit"]
-        path = GWToolkit
-        url = https://github.com/iphysresearch/GWToolkit.git1
-Plain Text
-[submodule "GWToolkit"]
-        url = https://github.com/iphysresearch/GWToolkit.git
-        active = true1
-Plain Text
-$ rm -rf .git/modules/GWToolkit 1
-Bash
+## 数据库相关
+
+| 功能 | 命令 | 解释 |
+|------|------|------|
+| 连接数据库 | `psql -h 172.18.0.2 -p 5432 -U mangosteen -d mangosteen_dev` | 主机名称 docker 内的 |
+| 删除表 | `DROP TABLE &lt;table_name&gt;` | |
+| 创建数据表的映射 | `bin/rails g model user email:string name:string` | 生成 user 的表内有 email、name 字段 |
+| 同步到数据库 | `bin/rails db:migrate` | 数据库操作工具 ActiveRecord::Migration |
+| 回滚数据库操作 | `bin/rails db:rollback step=1` | |
+| 创建数据库 | `rails db:create RAILS_ENV=test` | 测试环境创建数据库 |
+
+## MVC 操作相关
+
+| 功能 | 命令 | 解释 |
+|------|------|------|
+| 创建 model | `bin/rails g model ValidationCode email:string kind:string used_at:datetime` | 生成 model 和数据库的映射关系 |
+| 创建 controller | `bin/rails g controller user create show` | 生成 /user 有 create、show 方法 |
+
+## 密钥管理
+
+`master.key + keys => .enc文件; .enc文件 + master.key => keys`
+
+命令：`bin/rails credentials:edit (--environment production)`
+
+| 环境 | 文件 |
+|------|------|
+| 开发环境 | `master.key`、`credentials.yml.enc` |
+| 生产环境 | `production.key`、`production.yml.enc` |
+
+## 单元测试相关
+
+| 功能 | 命令 |
+|------|------|
+| 生成 RSpec 配置文件 | `rails generate rspec:install` |
+| 创建测试文件 | `rails g rspec:model user` |
+| 执行测试 | `bundle exec rspec` |
+
+## 编写常见 API 顺序
+
+1. 创建 model，运行 `db:migrate`
+2. 创建 controller
+3. 编写单元测试
+4. 编写代码
+5. 编写文档

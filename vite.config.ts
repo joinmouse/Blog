@@ -41,6 +41,11 @@ export default defineConfig(async () => {
         // these notes than authored inline HTML.
         transforms: {
           before(code) {
+            // Vue components that should NOT be escaped
+            const vueComponents = new Set([
+              'Callout', 'CodeGroup', 'LinkCard', 'Steps',
+              'template', 'slot',
+            ]);
             const lines = code.split('\n');
             let inFence = false;
             for (let i = 0; i < lines.length; i++) {
@@ -52,10 +57,14 @@ export default defineConfig(async () => {
               if (inFence) continue;
               // Skip indented (4-space) code blocks — leave alone
               if (/^ {4,}/.test(line)) continue;
-              // Escape every <Identifier...> occurrence
+              // Escape every <Identifier...> occurrence EXCEPT Vue components
               lines[i] = line.replace(
                 /<(\/?[A-Za-z_][\w.,\[\]\s|=":'\/@?&!#%^*(){}\\$_+~-]*)>/g,
-                (_, inner) => `&lt;${inner}&gt;`,
+                (match, inner) => {
+                  const tagName = inner.replace(/^\//, '').split(/[\s.]/)[0];
+                  if (vueComponents.has(tagName)) return match;
+                  return `&lt;${inner}&gt;`;
+                },
               );
             }
             return lines.join('\n');
