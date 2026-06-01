@@ -54,7 +54,7 @@ export default defineConfig(async () => {
               if (/^ {4,}/.test(line)) continue;
               // Escape every <Identifier...> occurrence
               lines[i] = line.replace(
-                /<(\/?[A-Za-z_][\w.,\[\]\s|=":'/-]*)>/g,
+                /<(\/?[A-Za-z_][\w.,\[\]\s|=":'\/@?&!#%^*(){}\\$_+~-]*)>/g,
                 (_, inner) => `&lt;${inner}&gt;`,
               );
             }

@@ -15,6 +15,9 @@ const categoryLabels: Record<string, string> = {
   browser: '浏览器',
   java: 'Java',
   node: 'Node.js',
+  blockchain: 'Blockchain',
+  golang: 'Go',
+  ruby: 'Ruby',
   misc: '其他',
 };
 

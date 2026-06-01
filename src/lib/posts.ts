@@ -49,7 +49,7 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   const filename = parts[parts.length - 1];
   const slug = /^\d+-/.test(filename)
     ? filename.match(/^\d+/)![0]
-    : filename.match(/^j-[0-9a-f]+/)?.[0] || filename;
+    : filename.match(/^(j|yq)-[\w]+/)?.[0] || filename;
   // date 可能是 string ("2018-01-25") 或 Date 对象（YAML 解析后）。
   // 统一规整为 YYYY-MM-DD 字符串。
   let date = '';
@@ -108,6 +108,9 @@ export function getAllCategories(): { category: string; count: number; label: st
     browser: '浏览器',
     java: 'Java',
     node: 'Node.js',
+    blockchain: 'Blockchain',
+    golang: 'Go',
+    ruby: 'Ruby',
     misc: '其他',
   };
   const counts = new Map<string, number>();
