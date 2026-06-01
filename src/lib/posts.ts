@@ -25,22 +25,28 @@ export interface PostMeta {
   date: string;
   tags: string[];
   source?: string;
+  category?: string;
 }
 
 export interface PostFull extends PostMeta {
   component: Component;
 }
 
-const modules = import.meta.glob<MarkdownModule>('/content/posts/*.md', { eager: true });
+const modules = import.meta.glob<MarkdownModule>('/content/posts/**/*.md', { eager: true });
 
 const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   // unplugin-vue-markdown 在 build 时把 frontmatter 放在 mod.frontmatter，
   // 但在 vitest 环境下会展平到 mod 顶层。两种都兼容。
   const fm = (mod.frontmatter as Record<string, any>) || (mod as Record<string, any>);
+  // Extract category from subdirectory (e.g. /content/posts/javascript/xxx.md → "javascript")
+  // Root-level files have no category.
+  const parts = filepath.replace(/\.md$/, '').split('/');
+  const postsIdx = parts.indexOf('posts');
+  const category = parts.length > postsIdx + 2 ? parts[postsIdx + 1] : undefined;
   // slug 规则：去掉路径和 .md 后缀。
   //   GitHub Issues 来源：0001-xxx.md → "0001"（保留四位数字前缀，去掉描述）
   //   简书来源：         j-xxxxx-标题.md → "j-xxxxx"（只取 j-前缀+slug 部分）
-  const filename = (filepath.split('/').pop() || '').replace(/\.md$/, '');
+  const filename = parts[parts.length - 1];
   const slug = /^\d+-/.test(filename)
     ? filename.match(/^\d+/)![0]
     : filename.match(/^j-[0-9a-f]+/)?.[0] || filename;
@@ -59,6 +65,7 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
     date,
     tags: Array.isArray(fm.tags) ? fm.tags : [],
     source: fm.source,
+    category,
     component: mod.default,
   };
 });
