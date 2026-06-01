@@ -49,7 +49,9 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   const filename = parts[parts.length - 1];
   const slug = /^\d+-/.test(filename)
     ? filename.match(/^\d+/)![0]
-    : filename.match(/^(j|yq)-[\w]+/)?.[0] || filename;
+    : /^j-/.test(filename)
+      ? filename.match(/^j-[A-Za-z0-9]+/)![0]
+      : filename;
   // date 可能是 string ("2018-01-25") 或 Date 对象（YAML 解析后）。
   // 统一规整为 YYYY-MM-DD 字符串。
   let date = '';

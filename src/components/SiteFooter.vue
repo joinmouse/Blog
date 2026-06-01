@@ -2,7 +2,7 @@
 
 <template>
   <footer class="site-footer">
-    <div>© {{ new Date().getFullYear() }} joinmouse</div>
+    <div>© 2017 — {{ new Date().getFullYear() }} joinmouse</div>
     <div class="meta">
       <a href="https://github.com/joinmouse/Blog" target="_blank" rel="noopener">Source on GitHub</a>
     </div>
