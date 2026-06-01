@@ -2,6 +2,8 @@
 
 个人前端技术博客，内容涵盖 JavaScript、TypeScript、Vue、CSS 等。
 
+网站: https://blog-5oz.pages.dev/
+
 ## 技术栈
 
 - Vue 3 + Vite + TypeScript
@@ -9,10 +11,6 @@
 - shiki (代码高亮)
 - Cloudflare Pages 部署
 
-## 内容来源
-
-- **GitHub Issues** — 较深入的原理性文章（JavaScript 深入浅出、TypeScript 类型系统、Vue 响应式原理等）
-- **简书** — 早期学习笔记和基础整理
 
 ## 目录结构
 
@@ -30,17 +28,3 @@ content/posts/
 ├── node/          Express 框架
 └── misc/          其他
 ```
-
-## 本地开发
-
-```bash
-npm install
-npm run dev      # 启动开发服务器
-npm test         # 运行测试
-npm run build    # 构建
-npm run deploy   # 构建并部署到 Cloudflare Pages
-```
-
-## License
-
-MIT
