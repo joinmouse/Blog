@@ -6,6 +6,7 @@ const props = defineProps<{ post: PostMeta }>();
 
 const categoryLabels: Record<string, string> = {
   javascript: 'JS',
+  typescript: 'TS',
   css: 'CSS',
   jquery: 'jQuery',
   ajax: 'HTTP',
@@ -15,7 +16,6 @@ const categoryLabels: Record<string, string> = {
   java: 'Java',
   node: 'Node',
   misc: '其他',
-  github: 'GitHub',
 };
 
 function formatDate(d: string): string {

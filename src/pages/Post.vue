@@ -6,6 +6,7 @@ import TagPill from '../components/TagPill.vue';
 
 const categoryLabels: Record<string, string> = {
   javascript: 'JavaScript',
+  typescript: 'TypeScript',
   css: 'CSS',
   jquery: 'jQuery',
   ajax: 'Ajax & HTTP',
@@ -15,7 +16,6 @@ const categoryLabels: Record<string, string> = {
   java: 'Java',
   node: 'Node.js',
   misc: '其他',
-  github: 'GitHub Issues',
 };
 
 const route = useRoute();

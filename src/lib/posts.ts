@@ -99,6 +99,7 @@ export function getAllTags(): { tag: string; count: number }[] {
 export function getAllCategories(): { category: string; count: number; label: string }[] {
   const labels: Record<string, string> = {
     javascript: 'JavaScript',
+    typescript: 'TypeScript',
     css: 'CSS',
     jquery: 'jQuery',
     ajax: 'Ajax & HTTP',
@@ -111,8 +112,7 @@ export function getAllCategories(): { category: string; count: number; label: st
   };
   const counts = new Map<string, number>();
   for (const p of posts) {
-    const cat = p.category || 'github';
-    counts.set(cat, (counts.get(cat) || 0) + 1);
+    if (p.category) counts.set(p.category, (counts.get(p.category) || 0) + 1);
   }
   return [...counts.entries()]
     .map(([category, count]) => ({
@@ -124,7 +124,7 @@ export function getAllCategories(): { category: string; count: number; label: st
 }
 
 export function getPostsByCategory(category: string): PostMeta[] {
-  return getAllPosts().filter((p) => (p.category || 'github') === category);
+  return getAllPosts().filter((p) => p.category === category);
 }
 
 export function getPostsByTag(tag: string): PostMeta[] {

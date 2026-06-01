@@ -10,7 +10,7 @@ const activeCategory = ref<string | null>(null);
 
 const filtered = computed(() => {
   if (!activeCategory.value) return allPosts;
-  return allPosts.filter((p) => (p.category || 'github') === activeCategory.value);
+  return allPosts.filter((p) => p.category === activeCategory.value);
 });
 
 function toggleCategory(cat: string) {
