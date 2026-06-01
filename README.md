@@ -1,68 +1,46 @@
-### blogs
-之前写的博客都在[简书](https://www.jianshu.com/u/46be9e6b1e89)上，感觉知识比较零散和基础，打算在github上沉淀一些核心的的基础知识和一些偏向原理性的文章
+# Blog
 
----
+个人前端技术博客，内容涵盖 JavaScript、TypeScript、Vue、CSS 等。
 
-### JavaScript
-[JavaScript之词法作用域](https://github.com/joinmouse/Blog/issues/2)
+## 技术栈
 
-[JavaScript之执行上下文](https://github.com/joinmouse/Blog/issues/3)
+- Vue 3 + Vite + TypeScript
+- unplugin-vue-markdown (Markdown → Vue 组件)
+- shiki (代码高亮)
+- Cloudflare Pages 部署
 
-[JavaScript之解读闭包(Closure)](https://github.com/joinmouse/Blog/issues/26)
+## 内容来源
 
-[JavaScript之原型到原型链](https://github.com/joinmouse/Blog/issues/6)
+- **GitHub Issues** — 较深入的原理性文章（JavaScript 深入浅出、TypeScript 类型系统、Vue 响应式原理等）
+- **简书** — 早期学习笔记和基础整理
 
-[JavaScript之Promise对象](https://github.com/joinmouse/Blog/issues/8)
+## 目录结构
 
-[JavaScript之Promise问答](https://github.com/joinmouse/Blog/issues/9)
+```
+content/posts/
+├── javascript/    JavaScript 核心、ES6、异步、闭包等
+├── typescript/    TypeScript 类型系统
+├── vue/           Vue 响应式原理、组件、双向绑定
+├── css/           CSS 居中、盒模型、Flex、可视化格式模型
+├── jquery/        jQuery 源码解读
+├── ajax/          HTTP 协议、跨域、axios 封装
+├── engineering/   前端路由、模块化、MVC
+├── browser/       浏览器渲染、URL 到页面展示
+├── java/          Java 面向对象
+├── node/          Express 框架
+└── misc/          其他
+```
 
-[JavaScript之Event Loop](https://github.com/joinmouse/Blog/issues/5)
+## 本地开发
 
-[JavaScript之数组去重引发的思考 ](https://github.com/joinmouse/Blog/issues/7)
+```bash
+npm install
+npm run dev      # 启动开发服务器
+npm test         # 运行测试
+npm run build    # 构建
+npm run deploy   # 构建并部署到 Cloudflare Pages
+```
 
-[(译)理解JavaScript函数调用和"this"](https://github.com/joinmouse/Blog/issues/25)
+## License
 
-
-### TypeScript类型系统
-[TypeScript基本类型(上)](https://github.com/joinmouse/Blog/issues/14)
-
-[TypeScript基本类型(下)](https://github.com/joinmouse/Blog/issues/15)
-
-[TypeScript接口(一)](https://github.com/joinmouse/Blog/issues/16)
-
-[TypeScript接口(二)](https://github.com/joinmouse/Blog/issues/17)
-
-[TypeScript接口(三)](https://github.com/joinmouse/Blog/issues/18)
-
-[TypeScript函数(上)](https://github.com/joinmouse/Blog/issues/19)
-
-[TypeScript函数(下)](https://github.com/joinmouse/Blog/issues/20)
-
-[TypeScript类(上)](https://github.com/joinmouse/Blog/issues/21)
-
-[TypeScript类(下)](https://github.com/joinmouse/Blog/issues/22)
-
-[TypeScript泛型(上)](https://github.com/joinmouse/Blog/issues/23)
-
-[TypeScript泛型(上)](https://github.com/joinmouse/Blog/issues/24)
-
-
-### Vue 深入响应式原理
-[Vue 深入响应式原理(一)](https://github.com/joinmouse/Blog/issues/10)
-
-[Vue 深入响应式原理(二)](https://github.com/joinmouse/Blog/issues/11)
-
-[Vue 深入响应式原理(三)](https://github.com/joinmouse/Blog/issues/12)
-
-[Vue 深入响应式原理(四)](https://github.com/joinmouse/Blog/issues/13)
-
-### 前端路由介绍及自制路由
-[前端路由的详细介绍](https://github.com/joinmouse/Blog/issues/4)
-
-
-### Node
-
-
-### Life
-
-漫长人生告慰书: https://www.zhihu.com/roundtable/longlife
+MIT

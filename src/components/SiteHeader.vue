@@ -11,6 +11,7 @@ import { RouterLink } from 'vue-router';
     </RouterLink>
     <nav class="nav">
       <RouterLink to="/" exact-active-class="active">Posts</RouterLink>
+      <RouterLink to="/life" active-class="active">Life</RouterLink>
       <RouterLink to="/about" active-class="active">About</RouterLink>
     </nav>
   </header>
