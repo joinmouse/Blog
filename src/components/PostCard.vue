@@ -2,7 +2,21 @@
 import { RouterLink } from 'vue-router';
 import type { PostMeta } from '../lib/posts';
 
-defineProps<{ post: PostMeta }>();
+const props = defineProps<{ post: PostMeta }>();
+
+const categoryLabels: Record<string, string> = {
+  javascript: 'JS',
+  css: 'CSS',
+  jquery: 'jQuery',
+  ajax: 'HTTP',
+  vue: 'Vue',
+  engineering: '工程化',
+  browser: '浏览器',
+  java: 'Java',
+  node: 'Node',
+  misc: '其他',
+  github: 'GitHub',
+};
 
 function formatDate(d: string): string {
   // "2019-08-21" -> "Aug 21, 2019"
@@ -22,9 +36,12 @@ function formatDate(d: string): string {
       <h3 class="title">{{ post.title }}</h3>
       <time class="date" :datetime="post.date">{{ formatDate(post.date) }}</time>
     </div>
-    <div v-if="post.tags.length" class="tags">
-      <span v-for="(t, i) in post.tags" :key="t" class="tag">
-        <span v-if="i > 0" class="sep">·</span>{{ t }}
+    <div class="meta-row">
+      <span v-if="post.category" class="cat-badge">{{ categoryLabels[post.category] || post.category }}</span>
+      <span v-if="post.tags.length" class="tags">
+        <span v-for="(t, i) in post.tags" :key="t" class="tag">
+          <span v-if="i > 0" class="sep">·</span>{{ t }}
+        </span>
       </span>
     </div>
   </RouterLink>
@@ -73,13 +90,30 @@ function formatDate(d: string): string {
   white-space: nowrap;
   letter-spacing: 0.02em;
 }
-.tags {
+.meta-row {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
   margin-top: 6px;
   flex-wrap: wrap;
   font-size: 12px;
   color: var(--text-soft);
+}
+.cat-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
 }
 .tag {
   display: inline-flex;

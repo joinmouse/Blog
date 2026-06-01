@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { getAllPosts, getAllTags } from '../lib/posts';
+import { getAllPosts, getAllCategories } from '../lib/posts';
 import PostCard from '../components/PostCard.vue';
 
 const allPosts = getAllPosts();
-const allTags = getAllTags();
+const allCategories = getAllCategories();
 
-const activeTag = ref<string | null>(null);
+const activeCategory = ref<string | null>(null);
 
 const filtered = computed(() => {
-  if (!activeTag.value) return allPosts;
-  return allPosts.filter((p) => p.tags.includes(activeTag.value!));
+  if (!activeCategory.value) return allPosts;
+  return allPosts.filter((p) => (p.category || 'github') === activeCategory.value);
 });
 
-function toggleTag(t: string) {
-  activeTag.value = activeTag.value === t ? null : t;
+function toggleCategory(cat: string) {
+  activeCategory.value = activeCategory.value === cat ? null : cat;
 }
 </script>
 
@@ -30,20 +30,20 @@ function toggleTag(t: string) {
 
     <div class="filter">
       <button
-        class="tag-btn"
-        :class="{ active: activeTag === null }"
-        @click="activeTag = null"
+        class="cat-btn"
+        :class="{ active: activeCategory === null }"
+        @click="activeCategory = null"
       >
         All<span class="count">·{{ allPosts.length }}</span>
       </button>
       <button
-        v-for="t in allTags"
-        :key="t.tag"
-        class="tag-btn"
-        :class="{ active: activeTag === t.tag }"
-        @click="toggleTag(t.tag)"
+        v-for="c in allCategories"
+        :key="c.category"
+        class="cat-btn"
+        :class="{ active: activeCategory === c.category }"
+        @click="toggleCategory(c.category)"
       >
-        {{ t.tag }}<span class="count">·{{ t.count }}</span>
+        {{ c.label }}<span class="count">·{{ c.count }}</span>
       </button>
     </div>
 
@@ -82,7 +82,7 @@ function toggleTag(t: string) {
   border-bottom: 1px solid var(--border-soft);
 }
 
-.tag-btn {
+.cat-btn {
   font-size: 12px;
   padding: 5px 12px;
   border-radius: 999px;
@@ -91,17 +91,18 @@ function toggleTag(t: string) {
   color: var(--text-soft);
   font-family: var(--font-sans);
   transition: all 0.15s ease;
+  cursor: pointer;
 }
-.tag-btn:hover {
+.cat-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
-.tag-btn.active {
+.cat-btn.active {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
 }
-.tag-btn.active .count {
+.cat-btn.active .count {
   color: rgba(255, 255, 255, 0.75);
 }
 .count {

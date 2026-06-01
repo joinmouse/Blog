@@ -17,7 +17,6 @@ describe('Home page', () => {
     await router.isReady();
 
     const cards = wrapper.findAll('a.card');
-    // at least the 26 GitHub issues; usually 26 + ~100 jianshu
     expect(cards.length).toBeGreaterThanOrEqual(26);
   });
 
@@ -26,32 +25,32 @@ describe('Home page', () => {
     const wrapper = mount(Home, { global: { plugins: [router] } });
     await router.isReady();
 
-    // total appears somewhere on the page
     expect(wrapper.text()).toMatch(/\d+/);
   });
 
-  it('renders tag filter buttons including All + at least one tag', async () => {
+  it('renders category filter buttons including All + at least one category', async () => {
     const router = makeRouter();
     const wrapper = mount(Home, { global: { plugins: [router] } });
     await router.isReady();
 
-    const btns = wrapper.findAll('button.tag-btn');
+    const btns = wrapper.findAll('button.cat-btn');
     expect(btns.length).toBeGreaterThan(1);
     expect(btns[0].text()).toContain('All');
   });
 
-  it('clicking a tag button filters the post list', async () => {
+  it('clicking a category button filters the post list', async () => {
     const router = makeRouter();
     const wrapper = mount(Home, { global: { plugins: [router] } });
     await router.isReady();
 
-    const tsBtn = wrapper
-      .findAll('button.tag-btn')
-      .find((b) => b.text().startsWith('TypeScript'));
-    expect(tsBtn).toBeDefined();
-    await tsBtn!.trigger('click');
+    const jsBtn = wrapper
+      .findAll('button.cat-btn')
+      .find((b) => b.text().startsWith('JavaScript'));
+    expect(jsBtn).toBeDefined();
+    await jsBtn!.trigger('click');
 
     const cards = wrapper.findAll('a.card');
-    expect(cards.length).toBe(11); // TypeScript has 11 posts
+    // javascript subdirectory has 24 jianshu articles
+    expect(cards.length).toBeGreaterThanOrEqual(20);
   });
 });

@@ -4,6 +4,20 @@ import { useRoute, RouterLink } from 'vue-router';
 import { getPostBySlug } from '../lib/posts';
 import TagPill from '../components/TagPill.vue';
 
+const categoryLabels: Record<string, string> = {
+  javascript: 'JavaScript',
+  css: 'CSS',
+  jquery: 'jQuery',
+  ajax: 'Ajax & HTTP',
+  vue: 'Vue',
+  engineering: '工程化',
+  browser: '浏览器',
+  java: 'Java',
+  node: 'Node.js',
+  misc: '其他',
+  github: 'GitHub Issues',
+};
+
 const route = useRoute();
 const slug = computed(() => route.params.slug as string);
 const post = computed(() => getPostBySlug(slug.value));
@@ -26,7 +40,8 @@ function formatDate(d: string): string {
         <RouterLink to="/">← All posts</RouterLink>
       </div>
 
-      <div v-if="post.tags.length" class="tags-top">
+      <div v-if="post.category || post.tags.length" class="tags-top">
+        <span v-if="post.category" class="cat-badge">{{ categoryLabels[post.category] || post.category }}</span>
         <TagPill v-for="t in post.tags" :key="t" :tag="t" />
       </div>
 
@@ -97,6 +112,18 @@ function formatDate(d: string): string {
   gap: 6px;
   flex-wrap: wrap;
   margin-bottom: 16px;
+  align-items: center;
+}
+
+.cat-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .meta {

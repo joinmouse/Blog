@@ -96,6 +96,37 @@ export function getAllTags(): { tag: string; count: number }[] {
     .sort((a, b) => b.count - a.count);
 }
 
+export function getAllCategories(): { category: string; count: number; label: string }[] {
+  const labels: Record<string, string> = {
+    javascript: 'JavaScript',
+    css: 'CSS',
+    jquery: 'jQuery',
+    ajax: 'Ajax & HTTP',
+    vue: 'Vue',
+    engineering: '工程化',
+    browser: '浏览器',
+    java: 'Java',
+    node: 'Node.js',
+    misc: '其他',
+  };
+  const counts = new Map<string, number>();
+  for (const p of posts) {
+    const cat = p.category || 'github';
+    counts.set(cat, (counts.get(cat) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([category, count]) => ({
+      category,
+      count,
+      label: labels[category] || category,
+    }))
+    .sort((a, b) => b.count - a.count);
+}
+
+export function getPostsByCategory(category: string): PostMeta[] {
+  return getAllPosts().filter((p) => (p.category || 'github') === category);
+}
+
 export function getPostsByTag(tag: string): PostMeta[] {
   return getAllPosts().filter((p) => p.tags.includes(tag));
 }
