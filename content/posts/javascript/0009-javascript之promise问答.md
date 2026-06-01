@@ -52,7 +52,6 @@ console.log(5);
 - 重复，浏览器再执行一个macro-task,将macro-task队列中的任务取出执行，打印出1
 - 所有队列为空，代码执行完毕
 
-
 ### 问: 如下代码, setTimeout 到 10s 之后再 .then 调用, 那么 hello 是会在 10s 之后在打印吗, 还是一开始就打印?
 ```
 let doSth = new Promise((resolve, reject) => {
@@ -72,5 +71,4 @@ setTimeout(() => {
 - 10秒后打印出over
 
 所以我们是一开始就回打印出hello滴
-
 
