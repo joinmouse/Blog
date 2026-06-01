@@ -32,9 +32,13 @@ export default defineConfig(async () => {
           md.use(shiki);
         },
         wrapperClasses: 'prose',
-        // Escape bare <T> / <number> etc. in prose paragraphs so Vue's template
-        // compiler doesn't treat them as unclosed custom tags. Fenced code
-        // blocks are left untouched (markdown-it already escapes inside them).
+        // Escape bare <X> in prose paragraphs so Vue's template compiler
+        // doesn't treat them as unclosed custom tags. Fenced code blocks
+        // are left untouched (markdown-it already escapes inside them).
+        // Heuristic: anything that looks like <Identifier...> in regular
+        // markdown body gets escaped. We don't try to preserve "real" HTML
+        // tags — discussion text like "<div> 元素" is far more common in
+        // these notes than authored inline HTML.
         transforms: {
           before(code) {
             const lines = code.split('\n');
@@ -48,24 +52,10 @@ export default defineConfig(async () => {
               if (inFence) continue;
               // Skip indented (4-space) code blocks — leave alone
               if (/^ {4,}/.test(line)) continue;
-              // Escape <Identifier...> patterns that look like generic types,
-              // not real HTML tags. Heuristic: capitalised or all-lowercase
-              // identifier, possibly with [], ., or commas inside.
+              // Escape every <Identifier...> occurrence
               lines[i] = line.replace(
-                /<([A-Za-z_][\w.,\[\]\s|]*)>/g,
-                (match, inner) => {
-                  // Preserve real HTML/Vue tags & known inline tags
-                  const knownTags = new Set([
-                    'a','b','i','u','s','em','strong','code','pre','br','hr',
-                    'p','div','span','img','ul','ol','li','table','thead','tbody',
-                    'tr','td','th','blockquote','h1','h2','h3','h4','h5','h6',
-                    'sub','sup','mark','small','kbd','del','ins','figure','figcaption',
-                    'video','audio','source','iframe','details','summary','script','style',
-                  ]);
-                  const tagName = inner.split(/[\s>/]/)[0].toLowerCase();
-                  if (knownTags.has(tagName)) return match;
-                  return `&lt;${inner}&gt;`;
-                },
+                /<(\/?[A-Za-z_][\w.,\[\]\s|=":'/-]*)>/g,
+                (_, inner) => `&lt;${inner}&gt;`,
               );
             }
             return lines.join('\n');

@@ -37,9 +37,11 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   // unplugin-vue-markdown 在 build 时把 frontmatter 放在 mod.frontmatter，
   // 但在 vitest 环境下会展平到 mod 顶层。两种都兼容。
   const fm = (mod.frontmatter as Record<string, any>) || (mod as Record<string, any>);
-  // 从文件名提取前缀数字作为 slug，例如 0001-xxx.md -> "0001"
-  const filename = filepath.split('/').pop() || '';
-  const slug = filename.replace(/^(\d+)-.*\.md$/, '$1');
+  // slug 规则：去掉路径和 .md 后缀。
+  //   GitHub Issues 来源：0001-xxx.md → "0001"（保留四位数字前缀，去掉描述）
+  //   简书来源：         j-xxxxx.md → "j-xxxxx"（整个文件名）
+  const filename = (filepath.split('/').pop() || '').replace(/\.md$/, '');
+  const slug = /^\d+-/.test(filename) ? filename.match(/^\d+/)![0] : filename;
   // date 可能是 string ("2018-01-25") 或 Date 对象（YAML 解析后）。
   // 统一规整为 YYYY-MM-DD 字符串。
   let date = '';
@@ -59,8 +61,11 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   };
 });
 
-// Sort by slug desc (newest = highest number)
-posts.sort((a, b) => b.slug.localeCompare(a.slug));
+// Sort by date desc (newest first); same-date items by slug desc as tiebreaker
+posts.sort((a, b) => {
+  if (a.date !== b.date) return b.date.localeCompare(a.date);
+  return b.slug.localeCompare(a.slug);
+});
 
 export function getAllPosts(): PostMeta[] {
   return posts.map(({ component, ...meta }) => meta);
