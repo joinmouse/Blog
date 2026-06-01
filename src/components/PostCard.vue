@@ -16,8 +16,6 @@ const categoryLabels: Record<string, string> = {
   java: 'Java',
   node: 'Node',
   blockchain: 'Web3',
-  golang: 'Go',
-  ruby: 'Ruby',
   misc: '其他',
 };
 

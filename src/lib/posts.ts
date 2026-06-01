@@ -109,8 +109,6 @@ export function getAllCategories(): { category: string; count: number; label: st
     java: 'Java',
     node: 'Node.js',
     blockchain: 'Blockchain',
-    golang: 'Go',
-    ruby: 'Ruby',
     misc: '其他',
   };
   const counts = new Map<string, number>();
