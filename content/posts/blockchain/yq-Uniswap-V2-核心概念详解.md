@@ -1,6 +1,6 @@
 ---
-title: "Uniswap V 核⼼概念详解"
-date: 2026-06-01
+title: "Uniswap V 核心概念详解"
+date: 2024-06-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -12,7 +12,7 @@ source_kind: yuque
 以很容易地以接近市场价的价格买入或卖出资产，而不会引起市场价格大幅波动 。
 继续上面的例子，假设你是一个愿意将自己手中的火车票暂时借给售票处的人，以便于其他人可以随时
 从这里购买到票。作为回报，你会得到一部分由售票处收取的服务费。在这个场景下，就相当于一个“流
-动性提供者” (LP）。在去中心化金融（D eFi）领域内，L P是指那些向特定池子注入资金或其他形式 资产
+动性提供者” (LP）。在去中心化金融（DeFi）领域内，LP是指那些向特定池子注入资金或其他形式 资产
 的人，他们的目的是为了帮助其他用户更容易地进行交易，同时他们也可以从中赚取一定的交易费用作
 为报酬。
 传统做市商：
@@ -23,7 +23,7 @@ source_kind: yuque
  现在，想象有一个智能机器人代替了黄牛的角色。这个机器人使用复杂的算法而不是个人经验
 来决定每张票应该值多少钱。它不需要休息也不会受情绪影响，可以24/7不间断工作。更重要
 的是，任何人都可以通过向这个系统贡献资源（比如更多的票）成为“做市商”的一部分。这就
-是AMM（如U niswap）的工作方式——利用智能合约和数学模型来自动管理资产交换过程中的
+是AMM（如Uniswap）的工作方式——利用智能合约和数学模型来自动管理资产交换过程中的
 价格发现机制，使得整个过程更加透明、高效且无需信任第三方机构。
 通过这样的类比，希望能帮助你更好地理解这些金融术语背后的含义及其重要性。一、核心概念介绍
 ### 1.1 什么是流动性 (Liquidity)？
@@ -36,8 +36,8 @@ source_kind: yuque
 
 4恒定乘积公式是 Uniswap V2 的核心算 法，其数学表达式为：
 符号说明：
-x ：池子中 token0 的储备量（r eserve0）
-y ：池子中 token1 的储备量（r eserve1）
+x ：池子中 token0 的储备量（reserve0）
+y ：池子中 token1 的储备量（reserve1）
 k ：恒定乘积常数（在没有添加/移除流动性时保持不变）
 1. 初始状态
 2. 交易发生
@@ -59,7 +59,6 @@ Alice 获得的 USDT：二、工作机制
 池子：100 ETH + 200,000 USDT
 k = 100 * 200,000 = 20,000,000
 价格：1 ETH = 2,000 USDT1
-3
 y' = k / x' = 20,000,000 / 110 = 181,818.18 USDT1
 Δy = 200,000 - 181,818.18 = 18,181.82 USDT1
 
@@ -87,10 +86,6 @@ y' = k / x' = 20,000,000 / 110 = 181,818.18 USDT1
       |             ●●●●●
    0  |___________________●●●●●●●→ x (ETH)
       0   50  100  150  2001
-3
-5
-7
-9
 Price = y / x = reserve1 / reserve01
 
 6实际交易时的价格会随着交易量变化：
@@ -108,10 +103,6 @@ function  getAmountOut (uint amountIn , uint reserveIn , uint reserveOut )
     uint denominator  = reserveIn  * 1000 + amountInWithFee ;
     amountOut  = numerator  / denominator ;
 }1
-3
-5
-7
-9
 已知：(x + Δx) * (y - Δy) = x * y = k
 求解：Δy = ?
 展开：x*y - x*Δy + y*Δx - Δx*Δy = x*y
@@ -120,10 +111,6 @@ function  getAmountOut (uint amountIn , uint reserveIn , uint reserveOut )
       Δy = y*Δx / x
 加入手续费（ 0.3% ）：
       Δy = y * (Δx * 0.997) / (x + Δx * 0.997)1
-3
-5
-7
-9
 
 7价格平衡公式：
 初始状态：
@@ -136,10 +123,6 @@ function  getAmountOut (uint amountIn , uint reserveIn , uint reserveOut )
 - Uniswap 池子中  ETH 减少， USDT 增加
 - 价格上涨，逐渐接近  2,100 USDT/ETH
 - 套利空间消失，价格达到平衡1
-3
-5
-7
-9
 Uniswap 价格  ≈ 外部市场价格  ± 手续费成本 1
 池子：100 ETH + 200,000 USDT
 k = 20,000,0001
@@ -153,11 +136,6 @@ k = 20,000,0001
 - 池子：110 ETH + 181,867.12 USDT
 - 新价格： 181,867.12 / 110 = 1,653.34 USDT/ETH
 - 滑点：(2,000 - 1,813.29) / 2,000 = 9.33%1
-3
-5
-7
-9
-11
 
 8虽然叫"恒定"乘积，但 K  值实际上会因 为手续费而 缓慢增长 ：
 K 值增长 = LP 收益增长
@@ -174,19 +152,12 @@ LP Token（Liquidity Provider Token）是一种 ERC-20 代币，代表流动性�
 新状态：
 - 池子：107.066 ETH + 186,867.12 USDT
 - 新价格： 186,867.12 / 107.066 = 1,745.36 USDT/ETH1
-3
-5
-7
-9
-11
 交易前：k = 100 * 200,000 = 20,000,000
 交易后：k = 110 * 181,867.12 = 20,005,383.2
 增长：0.027% （这就是  0.3% 手续费的一部分）1
-3
 LP Token = 银行存款凭证
 流动性池 = 银行金库
 赎回流动性  = 凭存款凭证取款1
-3
 
 9首次添加流动性：
 后续添加流动性：
@@ -198,7 +169,6 @@ liquidity  = min(
     amount0 * totalSupply  / reserve0 ,
     amount1 * totalSupply  / reserve1
 )1
-3
 投入：10 ETH + 20,000 USDT
 计算：
   liquidity = sqrt(10 * 20,000) - 1000
@@ -210,11 +180,6 @@ liquidity  = min(
 - 销毁到零地址： 1,000 LP Token （防止除零攻击）
 - 总供应量： 15,142 LP Token
 - Alice 份额： 14,142 / 15,142 = 93.4%1
-3
-5
-7
-9
-11
 
 10每个 LP Token 的价值：
 示例：
@@ -232,21 +197,12 @@ Bob 投入： 5 ETH + 10,000 USDT
 - 新总供应量： 22,713 LP Token
 - Bob 份额： 7,571 / 22,713 = 33.33%
 - Alice 份额： 14,142 / 22,713 = 62.26%1
-3
-5
-7
-9
-11
-13
-15
 LP Token 价值  = (reserve0 + reserve1 的总价值 ) / totalSupply 1
 池子：15 ETH + 30,000 USDT
 LP Token 总量： 22,713
 ETH 价格： 2,000 USDT
 总价值 = 15 * 2,000 + 30,000 = 60,000 USDT
 每个 LP Token 价值  = 60,000 / 22,713 = 2.64 USDT1
-3
-5
 
 11初始状态：
 Bob 赎回全部 LP Token：2. 赎回计算示例
@@ -268,18 +224,9 @@ Bob 赎回全部 LP Token：2. 赎回计算示例
     
     _update(balance0  - amount0, balance1  - amount1);
 }1
-3
-5
-7
-9
-11
-13
-15
-17
 池子：15 ETH + 30,000 USDT
 LP Token 总量： 22,713
 Bob 持有： 7,571 LP Token （ 33.33% ）1
-3
 可赎回 ETH = 15 * 7,571 / 22,713 = 5 ETH
 可赎回 USDT = 30,000 * 7,571 / 22,713 = 10,000 USDT
 结果：
@@ -287,9 +234,6 @@ Bob 持有： 7,571 LP Token （ 33.33% ）1
 - 销毁：7,571 LP Token
 - 新池子： 10 ETH + 20,000 USDT
 - 新总量： 15,142 LP Token1
-3
-5
-7
 
 12LP Token 的价值会随着交易手续费累积而增长：
 时间线：
@@ -315,13 +259,6 @@ T1 - 经过  100 笔交易后：
 T2 - Bob 赎回：
   可赎回：5.167 ETH + 10,333 USDT
   收益：0.167 ETH + 333 USDT ≈ 667 USDT1
-3
-5
-7
-9
-11
-13
-15
 // LP Token 继承  ERC-20
 contract  UniswapV2Pair  is ERC20 {
     function  transfer (address to, uint value) external  returns (bool);
@@ -329,8 +266,6 @@ contract  UniswapV2Pair  is ERC20 {
     function  transferFrom (address from, address to, uint value) external  re
 turns (bool);
 }1
-3
-5
 
 13LP Token 可以在 DeFi 生态中自由组合 ：
 最小流动性锁定（MINIMUM_L IQUIDITY）：
@@ -349,16 +284,11 @@ turns (bool);
 4. 获得 SUSHI 奖励
 5. 同时继续赚取  Uniswap 交易手续费
 双重收益！1
-3
-5
-7
 uint public constant  MINIMUM_LIQUIDITY  = 10**3;
 // 首次添加流动性时
 liquidity  = sqrt(amount0 * amount1);
 _mint(address(0), MINIMUM_LIQUIDITY );  // 永久锁定  1000 LP
 _mint(to, liquidity  - MINIMUM_LIQUIDITY );1
-3
-5
 
 14无常损失 是指：向流动性池提供资产后，如果代币价格发生变化，相比于单纯持有这些代币产生的 潜在
 损失。🎯 总结对比表
@@ -376,12 +306,6 @@ _mint(to, liquidity  - MINIMUM_LIQUIDITY );1
 影响因素：
 ✅ 交易手续费累积（正向）
 ⚠  无常损失（可能负向）1
-3
-5
-7
-9
-11
-13
 特性 传统股票 LP Token
 代表权益 公司所有权 池子份额
 收益来源 分红 + 股价上涨 手续费 + 价格变化
@@ -405,7 +329,6 @@ _mint(to, liquidity  - MINIMUM_LIQUIDITY );1
 3.3、损失公式与数据Alice 持有： 1 ETH + 2,000 USDT
 ETH 价格： 2,000 USDT
 总价值：4,000 USDT1
-3
 Plain Text
 价格变化 无常损失
 
@@ -421,5 +344,3 @@ ETH 涨价 → 套利者用 USDT 买走便宜 的 ETH
 2x -5.7%
 3x -13.4%
 5x -25.5%
-
-17

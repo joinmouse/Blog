@@ -1,6 +1,6 @@
 ---
 title: "浏览器渲染原理及优化 (): 关键渲染路径"
-date: 2026-06-01
+date: 2021-08-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -68,5 +68,3 @@ span节点就不会出现在渲染树中，因为该阶段设置了display:none�
 152参考：
 关键路径优化： https://github.com/berwin/Blog/issues/29
 优达学城：浏览器渲染优化(Google出品)
-
-153

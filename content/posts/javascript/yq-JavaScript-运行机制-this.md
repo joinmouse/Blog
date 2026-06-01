@@ -1,6 +1,6 @@
 ---
-title: "JavaScript 运⾏机制 (): this"
-date: 2026-06-01
+title: "JavaScript 运行机制 (): this"
+date: 2021-06-20
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -29,14 +29,6 @@ let _printName  = foo()
 _printName ()  // demo3
 let _getName  = bar.printName
 _getName () // demo31
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
 
 154this 是和执行上下文绑定的， 也就是说每个执行上下文中都含有一个this，执行上下文一般分为：全局
@@ -51,7 +43,6 @@ function  foo(){
   console.log(this)
 }
 foo()1
-3
 JavaScript
 
 155执行上面的代码我们会发现，打印的是window对象。这说明在默认情况下调用一个函数，其执行上下
@@ -72,11 +63,6 @@ function  foo(){
 }
 foo()  // undefined
 foo.call(bar)  // demo11
-3
-5
-7
-9
-11
 JavaScript
 
 156通过在控制台打印的结果我们发现foo()函数的实际调用是foo.call(window)，默认的话是将this指向了
@@ -89,8 +75,6 @@ console.log(this)
 foo()
 foo.call()
 foo.call(window)1
-3
-5
 JavaScript
 var myObj = {
   name : " demo1 " , 
@@ -101,10 +85,6 @@ var myObj = {
 myObj.showThis ()  //myObj
 let obj = myObj.showThis
 obj() //window1
-3
-5
-7
-9
 JavaScript
 myObj.showThis .call(myObj) 1
 JavaScript
@@ -129,12 +109,10 @@ function  CreateObj (){
   this.name = "joinmouse"
 }
 var myObj = new CreateObj ()1
-3
 JavaScript
 var tempObj = {}
 CreateObj .call(tempObj)
 return tempObj1
-3
 JavaScript
 
 158this是为了解决函数调用灵活性不足的问题，但是有些地方却有不少的坑
@@ -154,14 +132,6 @@ function  Toy(name, price) {
 }
 var cheese = new Food('feta', 5);
 var fun = new Toy('robot', 40);1
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
 var myObj = {
 name: 'demo',
@@ -173,10 +143,6 @@ name: 'demo',
   }
 }
 myObj.show()1
-3
-5
-7
-9
 JavaScript
 
 159我们会觉得this 应该和其外层show函数中的 this 是一致的，都是指向 myObj 对象的，这很符合人的直
@@ -199,12 +165,6 @@ name: 'demo',
 }
 myObj.show()
 console.log(myObj.name) //demo21
-3
-5
-7
-9
-11
-13
 JavaScript
 var myObj = {
 name: 'demo',
@@ -218,11 +178,6 @@ name: 'demo',
 }
 myObj.show()
 console.log(myObj.name) //demo21
-3
-5
-7
-9
-11
 JavaScript
 
 160ES6的箭头函数并不会创建其自身的执行上下文，所以箭头函数中的 this 取决于它的外部函数，非常符
@@ -250,10 +205,6 @@ var myName = "极客邦"
 }
 var myName = "极客时间 "
 foo()1
-3
-5
-7
-9
 JavaScript
 
 162对于作用域链，其实每个执行上下文的环境中都包含了一个外部的引用，用来执行外部的执行上下文，
@@ -298,15 +249,6 @@ var bar = foo()
 bar.setName(" 极客邦 ")
 bar.getName()
 console.log(bar.getName())1
-3
-5
-7
-9
-11
-13
-15
-17
-19
 JavaScript
 
 165innerBar 是一个对象，包含了 getName 和 setName 的两个方法，并且这两个方法都是在 foo 函数内
@@ -336,5 +278,3 @@ setName函数依旧可以使用foo 函数中的变量myName 和 test1，因此�
 包这块内容如果已经不再被使用了，那么 JavaScript 引擎的垃圾回收器就会回收这块内存。
 因而在使用闭包的时候注意一个原则：如果该闭包会一直使用，那么它可以作为全局变量而存在；但如
 果使用频率不高，而且占用内存⼜比较大的话，那就尽量让它成为一个局部变量。3、闭包的回收
-
-169

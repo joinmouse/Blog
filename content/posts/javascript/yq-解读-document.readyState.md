@@ -1,6 +1,6 @@
 ---
 title: "解读 | document.readyState"
-date: 2026-06-01
+date: 2022-06-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -27,8 +27,6 @@ document .onreadystatechange  = function  () {
     initApplication ();
   }
 }1
-3
-5
 JavaScript
 
 110附：Performance的timing属性各项的解释5、模拟load事件的readystatechange
@@ -38,8 +36,6 @@ document .onreadystatechange  = function  () {
     initApplication ();
   }
 }1
-3
-5
 JavaScript
 名称 作用（这里所有时间戳都代表UNIX毫秒时间戳）
 connectEnd 浏览器与服务器之间的连接建立时的时间戳，连
@@ -101,5 +97,3 @@ unloadEventStart 如果前一个网页与当前网页属于同一个域下，则
 表示前一个网页的unload事件发生时的时间戳。
 如果没有前一个网页，或者之前的网页跳转不是
 属于同一个域内，则返回值为0。
-
-113

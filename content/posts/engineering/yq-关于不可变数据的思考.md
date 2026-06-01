@@ -1,6 +1,6 @@
 ---
 title: "关于不可变数据的思考"
-date: 2026-06-01
+date: 2020-02-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -17,8 +17,6 @@ source_kind: yuque
 var rooms = ["h1", "h2", "h3"]
 rooms[2] = "h4"
 console.log(rooms)  // ["h1", "h2", "h4"]1
-3
-5
 JavaScript
 
 293我们可以看到这里我们运用了map，给map传入一个函数，遍历数组中的每一个值，如果是h3, 就返回
@@ -42,12 +40,6 @@ if(room === "h3") {
 })
 console.log(newRooms )  // ["h1", "h2", "h4"]
 console.log(rooms)  // ["h1", "h2", "h3"]1
-3
-5
-7
-9
-11
-13
 JavaScript
 const options = [{
 a: 1,
@@ -55,8 +47,4 @@ a: 1,
 }]
 init_person (options)
 console.log(options)1
-3
-5
 JavaScript
-
-294

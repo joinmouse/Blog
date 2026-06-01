@@ -1,6 +1,6 @@
 ---
 title: "JavaScript 异步编程 (): Promise"
-date: 2026-06-01
+date: 2020-10-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -29,12 +29,6 @@ function  makeRequest (request_url ) {
     }
     return request
 }1
-3
-5
-7
-9
-11
-13
 JavaScript
 //[in] request ，请求信息，请求头，延时值，返回类型等
 //[out] resolve, 执行成功，回调该函数
@@ -54,14 +48,6 @@ function  XFetch(request, resolve, reject) {
     //...
     xhr.send();
 }1
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
 
 213经过封装后的函数中我们这里主要传入3个参数就好了：一个请求信息、一个成功回调函数和一个失败
@@ -79,11 +65,6 @@ XFetch(
         console.log(e)
     }
 )1
-3
-5
-7
-9
-11
 JavaScript
 XFetch(
   makeRequest ('https://time.geekbang.org/?category' ),
@@ -105,15 +86,6 @@ XFetch(
           console.log(e)
       }
  )1
-3
-5
-7
-9
-11
-13
-15
-17
-19
 JavaScript
 
 214如果请求成功的话，那么再请求 time.geekbang.org/column 
@@ -157,17 +129,6 @@ JavaScript
   }
   return new Promise(executor )
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
 JavaScript
 var x1 = XFetch(makeRequest ('https://time.geekbang.org/?category' ))
 var x2 = x1.then(value => {
@@ -181,11 +142,6 @@ var x3 = x2.then(value => {
 x3.catch(error => {
     console.log(error)
 })1
-3
-5
-7
-9
-11
 JavaScript
 
 216引入Promise，在调用XFetch的时候，会返回一个Promise对象
@@ -217,12 +173,6 @@ function  onResolve (val) {
 console.log(val)
 }
 x1.then(onResolve )1
-3
-5
-7
-9
-11
-13
 JavaScript
 
 217我们知道执行resolve函数会触发x1.then设置的回调函数onResolve，所以可以推测resolve函数内部调
@@ -245,12 +195,6 @@ resolve 函数的时候，回调函数还没有绑定，那么只能推迟回调
     }
     executor (resolve, null);
 }1
-3
-5
-7
-9
-11
-13
 JavaScript
 function  executor (resolve, reject) {
     resolve(100)
@@ -262,10 +206,6 @@ function  onResolve (value){
     console.log(value)
 }
 x1.then(onResolve )1
-3
-5
-7
-9
 JavaScript
 
 218之所以出现这个错误，是由于 PromiseX 的延迟绑定导致的，在调用到 onResolve_ 函数的时候，
@@ -280,16 +220,12 @@ PromiseX.then 还没有执行，所以执行上述代码的时候，当然会报
     at executor  (&lt;anonymous &gt;:17:5)
     at new Bromise (&lt;anonymous &gt;:13:5)
     at &lt;anonymous &gt;:19:121
-3
-5
 JavaScript
 function  resolve(value) {
   setTimeout (()=>{
     onResolve_ (value)
   },0)
 }1
-3
-5
 JavaScript
 
 219  Promise 通过回调函数延迟绑定和回调函数返回值穿透的技术，解决了循环嵌套
@@ -312,16 +248,6 @@ x2.then((value) => {
 console.log(x2)
   console.log(value)
 })1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
 JavaScript
 
 220上面这段代码中有4个Promise对象：p0~p4，无论哪个对象里面有异常，都可以通过最后一个p4.catch
@@ -361,25 +287,9 @@ p4.catch((error) => {
     console.log("error")
 })
 console.log(2)1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
 JavaScript
 
 221思考：
 1、Promise 中为什么要引入微任务？
 2、Promise 中是如何实现回调函数返回值穿透的？
 3、Promise 出错后，是怎么通过“冒泡”传递给最后那个捕获异常的函数？
-
-222

@@ -1,6 +1,6 @@
 ---
 title: "JavaScript 异步编程 (): 理解回调"
-date: 2026-06-01
+date: 2020-08-20
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -23,9 +23,6 @@ function  handlerArray (indexName , index) {
 console.log(index + "." + indexName )
 }
 myArr.forEach(handlerArray )1
-3
-5
-7
 JavaScript
 
 236这段代码中，我们使用了 setTimeout 函数，setTimeout 的第一个参数 foo 就是一个回 调函数，V8 
@@ -47,7 +44,6 @@ JavaScript
 console.log('foo')
 }
 setTimeout (foo, 1000)1
-3
 JavaScript
 
 237通用UI线程架构
@@ -64,9 +60,6 @@ while(queue.waitForMessage ()) {
     processNextMessage (task)
   }
 }1
-3
-5
-7
 JavaScript
 
 238分析：UI主线程执行A任务的时候调用setTimeOut(foo, 3000)，在执行setTimeout函数的过程中，宿
@@ -115,8 +108,6 @@ void MainThread (){
      int num3 = 7*8; // 任务 3
      print(" 最终计算的值为 :%d,%d,%d" ,num,num2,num3)； // 任务 4
  }1
-3
-5
 C++
 
 241并不是所有的任务都是在执行前统一安排好了，有些可能是在线程运行过程中产生的，要想在线程运行
@@ -139,14 +130,6 @@ for(;;){
         print(" 最终计算的值为 :%d",result_num );
     }
 }1
-3
-5
-7
-9
-11
-13
-15
-17
 C++
 
 242第一点引入了循环机制，具体实现方式是在线程语句最后添加了一个for 循环语句，线程会一直循
@@ -221,5 +204,3 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver
 - 
 - 
 - 
-
-248

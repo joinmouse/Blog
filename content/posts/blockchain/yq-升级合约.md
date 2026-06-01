@@ -1,11 +1,11 @@
 ---
 title: "升级合约"
-date: 2026-06-01
+date: 2024-05-10
 tags: ["语雀"]
 source_kind: yuque
 ---
 
-Solidity  合约部署在链上之后，代码是不可变的（im mutable）。这样既有优点，也有缺点
+Solidity  合约部署在链上之后，代码是不可变的（immutable）。这样既有优点，也有缺点
 优点：安全，用户知道会发生什么
 坏处：就算合约中存在bug ，也不能修改 或升级，只能部署新合约。但新合约的地址与旧的不一样，
 且合约的数据也需要花费大量g as进行迁移
@@ -56,25 +56,6 @@ he
       let _implementation  := sload(0)
       calldatacopy (0, 0, calldatasize ())
       // 利用delegatecall 调用 implementation 合约1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
-39
 solidity Solidity
 
 19      // delegatecall 操作码的参数分别为： gas, 目标合约地址， input mem 起始位置， in
@@ -118,27 +99,6 @@ contract  Logic {
 contract  Caller{
   address public proxy; // 代理合约地址
   constructor (address proxy_){40
-42
-44
-46
-48
-50
-52
-54
-56
-58
-60
-62
-64
-66
-68
-70
-72
-74
-76
-78
-80
-82
 
 20如果理解了代理合约，就很容易理解可升级合约。它就是一个可以更改逻辑合约的代理合约。3、可升级合约    proxy = proxy_;
   }
@@ -149,10 +109,6 @@ contract  Caller{
     return abi.decode( data,(uint));
   }
 }84
-86
-88
-90
-92
 
 21上面介绍了一个简单的可升级合约。它是一个可以改变逻辑合约的代理合约，给不可更改的智能合
 约增加了升级功能。但是这个合约 有选择器冲突 的问题，存在安全隐患。之后我们会介绍解决这
@@ -183,20 +139,6 @@ g.data);
         implementation  = newImplementation ;
     }
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
 Upgrade Contract Solidity
 
 22由于函数选择器仅有4 个字节，范围很 小，因此两个不同的函数可能会有相同的选择器，例如下面
@@ -213,8 +155,6 @@ contract  Foo {
     function  burn(uint256) external  {}
     function  collate_propagate_storage (bytes16) external  {}
 }1
-3
-5
 Solidity
 
 23透明代理的逻辑简单：通过限制管理员调用逻辑合约解决“ 选择器冲突” 问题。它也有缺点，每次
@@ -246,18 +186,6 @@ g.data);
         implementation  = newImplementation ;
     }
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
 Solidity
 
 24检查调用者是否为管理员
@@ -300,27 +228,6 @@ contract  UUPS1{
         implementation  = newImplementation ;
     }
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
-39
-41
-43
 Solidity
 
 26与透明代理不同，UUP S将升级函数放 在了逻辑合约中，从而使得" 选择器冲突" 不能通过编译。相
@@ -345,17 +252,5 @@ contract  UUPS2{
         implementation  = newImplementation ;
     }
 }44
-46
-48
-50
-52
-54
-56
-58
-60
-62
-64
 
 274、https://www.wtf.academy/zh/course/solidity103/UUPS
-
-28

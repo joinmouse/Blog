@@ -1,6 +1,6 @@
 ---
 title: "浏览器消息队列和事件循环系统"
-date: 2026-06-01
+date: 2020-06-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -38,8 +38,6 @@ foo(fn) {
 fn()
 }
 foo(bar)1
-3
-5
 JavaScript
 
 2242、执行foo函数，创建foo函数的执行上下文，并压入栈中
@@ -54,7 +52,6 @@ function  foo() {
 foo()
 }
 foo()1
-3
 JavaScript
 
 227那我们对上面的代码进行改造下
@@ -66,7 +63,6 @@ function  foo() {
   setTimeout (foo, 0)
 }
 foo()1
-3
 JavaScript
 
 2282、执行foo函数，创建foo函数的执行上下文
@@ -120,18 +116,6 @@ Promise.resolve().then(
 (str) = > console.log('micro-global' )
 )
 setTimeout ((str) => console.log('macro-global' ), 0)1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
 JavaScript
 
 2322、执行bar函数，微任务队列中放入micro-foo，消息队列中放入宏任务macro-foo
@@ -153,11 +137,4 @@ micro-global
 macro-foo
 macro-bar
 macro-global1
-3
-5
-7
-9
-11
 JavaScript
-
-235

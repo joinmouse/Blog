@@ -1,6 +1,6 @@
 ---
 title: "Go 简明教程"
-date: 2026-06-01
+date: 2023-04-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -18,18 +18,11 @@ scores2 := [4]int{9001, 9333, 212, 33}
 for index, value := range scores2 {
     
 }1
-3
-5
-7
-9
-11
 Go
 // 声明 slices
 scores := []int{1,4,293,4,9}
 // make 相当于其他语言的 new
 scores := make([]int, 10)1
-3
-5
 创建切片 Go
 
 83Go 语言中的映射，就好比其他语言中的 hash 表或者字典。
@@ -45,10 +38,6 @@ go中interface是通用数据类型，有点类似t s中的u nknown，这里也�
   // 0 is the default value for an integer
   fmt.Println(power, exists)
 }1
-3
-5
-7
-9
 map Go
 // 定义一个结构体
 type Book struct {
@@ -56,9 +45,6 @@ type Book struct {
     author string
 }
 unkonwn1
-3
-5
-7
 struct Go
 
 84计算机科学领域， 反射是指一类应用，它们能够自描述和自控制。也就是说，这类应用通过采用某种机
@@ -78,12 +64,4 @@ struct Go
     fmt.Println("The value is " , value)
     return value
 }1
-3
-5
-7
-9
-11
-13
 Go
-
-86

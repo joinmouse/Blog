@@ -1,6 +1,6 @@
 ---
-title: "JavaScript 运⾏机制 (): 作⽤域 (scope)"
-date: 2026-06-01
+title: "JavaScript 运行机制 (): 作用域 (scope)"
+date: 2021-04-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -38,11 +38,6 @@ int main() {
 showName ();
     return 0;
 }1
-3
-5
-7
-9
-11
 C
 var myname = " joinmouse "
 function  showName (){
@@ -53,10 +48,6 @@ function  showName (){
   console.log(myname);
 }
 showName ()1
-3
-5
-7
-9
 JavaScript
 
 171执行上面的代码，打印的结果是undefined，而并非像前面的那样的，为什么输出的是undefined？
@@ -71,8 +62,6 @@ for(var i=0; i<7; i++) {
   }
   console.log(i)
 }1
-3
-5
 JavaScript
 
 172let和const使得 JavaScript 也能像其他语言一样拥有了块级作用域。
@@ -84,7 +73,6 @@ let和const的区别是：使用 let 关键字声明的变量是可以被改变�
 const y = 6
 x = 7
 y = 9 // 报错， const 声明的变量不可以修改1
-3
 JavaScript
 // var
 function  varTest() {
@@ -104,15 +92,6 @@ function  letTest() {
   }
   console.log(x);  // 1
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
 JavaScript
 
 173我们已经知道 JavaScript 引擎是通过变量环境实现函数级作用域的，那么 ES6 ⼜是如何在函数级作用
@@ -132,13 +111,6 @@ JavaScript
     console.log(d)
 }   
 foo()1
-3
-5
-7
-9
-11
-13
-15
 JavaScript
 
 174因为c 使用var赋值的，因此会存在变量提升；这里的词法环境有些地方有称之为静态作用域，实际上
@@ -176,8 +148,4 @@ let myname= 'demo1'
   console.log(myname) 
   let myname= 'demo2'
 }1
-3
-5
 JavaScript
-
-177

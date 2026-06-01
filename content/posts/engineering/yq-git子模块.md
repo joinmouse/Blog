@@ -1,6 +1,6 @@
 ---
-title: "git⼦模块"
-date: 2026-06-01
+title: "git子模块"
+date: 2023-02-18
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -8,7 +8,7 @@ source_kind: yuque
 有种情况我们经常会遇到：某个工作中的项目需要包含并使用另一个项目。 也许是第三方库，或者你独
 立开发的，用于多个父项目的库。 现在问题来了：你想要把它们当做两个独立的项目，同时⼜想在一个
 项目中使用另一个。
-Git 通过子模块来解决这个问题。 子模块允许你将一个 G it 仓库作为另一个 G it 仓库的子目录。 
+Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录。 
 它能让你将另一个仓库克隆到自己的项目中，同时还保持提交的独立。
 添加一个远程仓库项目  https://github.com/iphysresearch/GWToolkit.git 子模块到一个已有主仓库项
 目中。代码形式是  git submodule add &lt;url&gt; &lt;repo_name&gt;， 如下面的例子：
@@ -39,14 +39,10 @@ Bash
   （使用 "git restore --staged < 文件 >..." 以取消暂存）
 新文件：   .gitmodules
 新文件：   GWToolkit1
-3
-5
-7
 Bash
 [submodule "GWToolkit"]
         url = https://github.com/iphysresearch/GWToolkit.git
         active = true1
-3
 Plain Text
 
 88此时还要留意的是，在终端 Git 命令操作下，位于主仓库目录中除了子模块外的任何子目录下进
@@ -60,8 +56,6 @@ $ cd ~/projects/&lt;module&gt;/&lt;sub_dir&gt;
 $ git log # still commits from Project &lt;module&gt;
 $ cd ~/projects/&lt;module&gt;/&lt;submodule&gt;
 $ git log # commits from &lt;submodule&gt;1
-3
-5
 Bash
 $ git submodule
  13fe233bb134e25382693905cfb982fe58fa94c9 GWToolkit (heads/main)1

@@ -1,6 +1,6 @@
 ---
 title: "Ruby"
-date: 2026-06-01
+date: 2022-10-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -16,14 +16,10 @@ Bash
 [submodule "GWToolkit"]
         path = GWToolkit
         url = https://github.com/iphysresearch/GWToolkit.git1
-3
 Plain Text
 [submodule "GWToolkit"]
         url = https://github.com/iphysresearch/GWToolkit.git
         active = true1
-3
 Plain Text
 $ rm -rf .git/modules/GWToolkit 1
 Bash
-
-91

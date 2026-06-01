@@ -1,6 +1,6 @@
 ---
-title: "JavaScript 运⾏机制 (): 执⾏上下⽂"
-date: 2026-06-01
+title: "JavaScript 运行机制 (): 执行上下文"
+date: 2021-02-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -18,8 +18,6 @@ var myname = '极客时间 '
 function  showName () {
     console.log('函数 showName 被执行 ');
 }1
-3
-5
 JavaScript
 
 178之所以是上面这种情况是因为我们知道JavaScript中对函数声明和变量声明会有一个提升。
@@ -27,8 +25,6 @@ var myname = '极客时间 '
 // 将上面的代码拆分成 2 行
 var myname    // 声明部分
 myname = '极客时间 '  // 赋值部分1
-3
-5
 JavaScript
 
 179上面是变量的声明和赋值，下面我们来理解下函数的声明和赋值
@@ -41,9 +37,6 @@ function  foo(){
 var bar = function (){
   console.log('bar')
 }1
-3
-5
-7
 JavaScript
 
 180总结下：所谓的变量提升，是指在 JavaScript 代码执行过程中，JavaScript 引擎把变量的声明部分和
@@ -70,15 +63,6 @@ showName ()  // showName 被调用
 console.log(myname)   //undefined
 // 去掉 var 声明部分，保留赋值语句
 myname = '极客时间 '1
-3
-5
-7
-9
-11
-13
-15
-17
-19
 JavaScript
 
 182那么我们这里可能会好奇，为什么要把代码分为声明阶段和执行阶段，这就要从js代码执行说起了，js
@@ -89,7 +73,7 @@ JavaScript
 我们前面将代码分为了声明阶段和执行阶段其实对应的就是JS引擎的编译阶段和执行阶段，以上面的代
 码为例，在JS引擎中执行如下所示：
 从上图可以看出，输入一段代码，经过编译后，会生成两部分内容：执行上下文（Execution 
-context）和可执行代码。2.1、编译阶段
+Context）和可执行代码。2.1、编译阶段
 
 183执行上下文是 JavaScript 执行一段代码时的运行环境，比如调用一个函数，就会进入这个函数的执行
 上下文，确定该函数在执行期间用到的诸如 this、变量、对象以及函数等。
@@ -106,7 +90,6 @@ showName 函数了。
 3、出现相同的变量或者函数VariableEnvironment :
      myname -> undefined , 
      showName  ->function  : {console.log(myname)1
-3
 JavaScript
 function  showName () {
     console.log('极客邦');
@@ -116,9 +99,6 @@ function  showName () {
     console.log('极客时间 ');
 }
 showName (); 1
-3
-5
-7
 JavaScript
 
 184第二次执行 showName 函数也是走同样的流程，所以输出的结果也是“极客时间”。
@@ -140,8 +120,6 @@ Promise 作为结果的函数。
 return 2
 }
 console.log(foo())  //Promise {&lt;resolved&gt;: 2}1
-3
-5
 JavaScript
 
 186我们可以先站在协程的视角去看上面的执行过程：
@@ -160,10 +138,6 @@ JavaScript
 console.log(0)
 foo()
 console.log(3)1
-3
-5
-7
-9
 JavaScript
 
 187在这个 promise_ 对象创建的过程中，我们可以看到在 executor 函数中调用了 resolve 函数，
@@ -181,13 +155,11 @@ promise 状态的改变
 3、其他异步执行方案比较let promise_   = new Promise((resolve,reject){
   resolve(100)
 })1
-3
 JavaScript
 promise_ .then((value)=>{
    // 回调函数被激活后
    // 将主线程控制权交给  foo 协程，并将  vaule 值传给协程
 })1
-3
 JavaScript
 
 188语法层面上比较我们发现其实就是funtion*  变成了 async function，并且默认返回promise对象，关键
@@ -205,12 +177,6 @@ let a = yield function (fn) {
   return b
 }
 co(gen)1
-3
-5
-7
-9
-11
-13
 JavaScript
 async gen() {
   console.log("执行第一段 ")
@@ -222,10 +188,6 @@ let a = await function (fn) {
   setTimeout (fn, 0)
   }
 }1
-3
-5
-7
-9
 JavaScript
 
 189上面的代码有个问题是所有远程操作都是继发。只有前一个 URL 返回结果，才会去读取下一个 URL，
@@ -238,8 +200,6 @@ JavaScript
     console.log(await response .text());
   }
 }1
-3
-5
 JavaScript
 async function  logInOrder (urls) {
   // 并发的读取远程 URL
@@ -252,11 +212,4 @@ async function  logInOrder (urls) {
 console.log(await textPromise )
   }
 }1
-3
-5
-7
-9
-11
 JavaScript
-
-190

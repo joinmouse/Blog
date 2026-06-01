@@ -1,6 +1,6 @@
 ---
 title: "笔记｜Chrome 架构演进"
-date: 2026-06-01
+date: 2020-04-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -84,8 +84,6 @@ response变量赋值
 var response  = ajax('https://example.com/api' );
 console.log(response );
 // `response` won't have the response1
-3
-5
 JavaScript
 
 255注意：实际上我们是可以去发送同步的ajax请求，但永远不要那么去做。如果你是发送了同步的ajax请
@@ -97,7 +95,6 @@ JavaScript
 件。代码如下：ajax('https://example.com/api' , function (response ) {
     console.log(response );  // `response` is now available
 });1
-3
 JavaScript
 // This is assuming that you're using jQuery
 jQuery.ajax({
@@ -107,9 +104,6 @@ jQuery.ajax({
     },
     async: false // And this is a terrible idea
 });1
-3
-5
-7
 JavaScript
 
 256在控制台输出的结果是：
@@ -135,16 +129,10 @@ function  third() {
 first();
 setTimeout (second, 1000);  // Invoke `second` after 1000ms
 third();1
-3
-5
-7
-9
-11
 JavaScript
 first
 third
 second1
-3
 JavaScript
 
 257时候并返回了响应数据，请执行回调函数"
@@ -164,8 +152,6 @@ setTimeout (function  cb1() {
     console.log('cb1');
 }, 5000);
 console.log('Bye');1
-3
-5
 JavaScript
 
 2592、console.log('Hi')是被push到调用栈中
@@ -220,13 +206,10 @@ setTimeout (function () {
     console.log('callback' );
 }, 0);
 console.log('Bye');1
-3
-5
 JavaScript
 Hi
 Bye
 callback1
-3
 JavaScript
 
 276译 | JavaScript 是如何运行：引擎， 运行时和调
@@ -272,10 +255,6 @@ function  printSquare (x) {
     console.log(s);
 }
 printSquare (5);1
-3
-5
-7
-9
 JavaScript
 
 280在Chrome中执行(代码对应的文件命名为foo.js)，将会产生如下的堆栈追踪： 
@@ -292,16 +271,11 @@ function  start() {
     bar();
 }
 start();1
-3
-5
-7
-9
 JavaScript
 function  foo() {
     foo();
 }
 foo();1
-3
 JavaScript
 
 281在某个时刻，调用堆栈中的函数调用次数超过了调用堆栈的实际大小，这样浏览器就会抛出错误的
@@ -320,5 +294,3 @@ JavaScript
 现在，这不是最好的用户体验，是嘛？
 那么，我们如何在不阻塞UI和浏览器无响应的情况下去执行一些笨重的代码呢？这个解决方式是异步回
 调
-
-283

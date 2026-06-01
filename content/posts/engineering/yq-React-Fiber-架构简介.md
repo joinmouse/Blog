@@ -1,6 +1,6 @@
 ---
 title: "React | Fiber 架构简介"
-date: 2026-06-01
+date: 2020-03-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -28,8 +28,6 @@ type: any,
     child Fiber //指向第一个子元素
     sibling Fiber //指向下一个弟弟
 }1
-3
-5
 JavaScript
 
 286参考文档：
@@ -94,12 +92,6 @@ var timerCancel  = requestAnimationFrame (function (){
     console.log(0);
 }); 
 cancelAnimationFrame (timerCancel );1
-3
-5
-7
-9
-11
-13
 JavaScript
 
 291使用requestAnimationFrame来实现一个进度条
@@ -127,10 +119,4 @@ while(deadline .timeRemaining () > 0 || deadline .didTimeout ) {
   }
   requestIdleCallback (handleUploadWork )
 }1
-3
-5
-7
-9
 JavaScript
-
-292

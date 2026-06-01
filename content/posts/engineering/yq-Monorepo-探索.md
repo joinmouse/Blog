@@ -1,6 +1,6 @@
 ---
 title: "Monorepo 探索"
-date: 2026-06-01
+date: 2022-12-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -8,21 +8,21 @@ source_kind: yuque
 Monorepo 可以理解为一种基于仓库 的代码管理策略，它提出将多个代码工程" 独立"的放在一个仓
 库里的管理模式。
 这里的独立是指的每个代码工程在逻辑上是可以独立运行开发以及维护管理的，目前很多大型的互
-联网公司都在采取这样的代码管理策略，比如Goo gle，Facebook，Uber，MicroSoft等，我们熟
-知的R eact、Vue、Vite、Babel等也采用了多包。
+联网公司都在采取这样的代码管理策略，比如Google，Facebook，Uber，MicroSoft等，我们熟
+知的React、Vue、Vite、Babel等也采用了多包。
 假设有这样一个前端场景： 有两个可以逻辑上被分割的项目 Project1 和 Project2 以及他们共用
 的一个公共库 lib。
 大型单仓( Single-repo Monolith)
-Project 和 lib 都会被组织在一个仓库 当中，并会将两个 P rojects 中代码进行杂糅，放在同一个代
+Project 和 lib 都会被组织在一个仓库 当中，并会将两个 Projects 中代码进行杂糅，放在同一个代
 码工程当中（当然这个组织形式可以有很多种，具体根据实际场景以及架构师对模块的设计理
-念）; 而 lib 代码会放在该工程目录下，两个 P rojects 可以简单的通过路径去引用，也可以通过工
+念）; 而 lib 代码会放在该工程目录下，两个 Projects 可以简单的通过路径去引用，也可以通过工
 具设置绝对地址 alias 来方便引入。1、Monorepo概念
 1.1、仓库组织对比
 - 
 
 92独立多仓( Multi-repo)
 这是我们非常熟悉的代码组织方式， 两个 Project 会单独成立代码工程放入 两个仓库当中。而 l ib 
-也会独立成库进行开发，并通过构建后进行NPM发包，两个 P rojects 需要通过 N PM 的形式安装
+也会独立成库进行开发，并通过构建后进行NPM发包，两个 Projects 需要通过 NPM 的形式安装
 和更新 lib。●.
 ├── package.json
 ├── src/
@@ -39,14 +39,6 @@ Project 和 lib 都会被组织在一个仓库 当中，并会将两个 P roject
 import {method} from '../../lib' ;
 // script 引入共享
 &lt;script src="@static/lib/index.js" &gt;&lt;/script&gt;1
-3
-5
-7
-9
-11
-13
-15
-17
 Repository - monolith JavaScript
 
 93独立单仓 Monorepo
@@ -82,27 +74,10 @@ Repository - monolith JavaScript
 - 进入Package1 或 Package2 进行npm install 或 npm update
 - 在代码中引入
 import {method} from '@my-scope/lib' ;1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
 多仓 JavaScript
 
 94packages 下的所有包视为子项目，纳入包管理。在 lib 目录下的p acakge.json 中为其添加
-name，同时添加到一级目录的 package.json 当中，即可被两个P rojects引用，而无需进行发包
+name，同时添加到一级目录的 package.json 当中，即可被两个Projects引用，而无需进行发包
 操作。
 Monolith 时期 
 我们的Mo nolith 这种模式是最早开发人员所使用的仓库架构模式，当时的前端功能还很简单，还
@@ -136,22 +111,6 @@ packages :
 - 在一级目录的  package.json 添加包名 @my-scope/lib: "workspace:*"
 - 在两个 projects 中的代码中引入
 import {method} from '@my-scope/lib' ;1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
 Repository - monorepo JavaScript
 
 95力越来越复杂，开始将项目拆分成不同的包
@@ -163,7 +122,7 @@ Multi-repo 的流行很大程度上是为了解决这种模块高度耦合，代
 建，和涉及整体业务的重构和依赖同步都将变得繁琐，此时回归单 re po 的概念⼜开始兴起。因
 此，已经被提出很久的 Monorepo 开始浮出水面，应运而生的工具也开始出现了。
 Monorepo ？
-Monorepo 的出现开始解决环境及依 赖统一的问题，代码之间的共享也不再强依赖于 N PM 来进
+Monorepo 的出现开始解决环境及依 赖统一的问题，代码之间的共享也不再强依赖于 NPM 来进
 行。既保留了 Monolith 单仓环境维护 的便利性，同时满足 Mu lti-repo 对于项目解耦的独立开发
 管理。
 后类似 lerna + yarn 的包管理方案的 出现让 Monorepo 拥有了较为完整的解决方案，并伴随着新
@@ -214,13 +173,13 @@ pnpm 在包依赖管理的机制上有着独特的成果，包括 symlink 和 ha
 97pnpm 在使用习惯上保留了 npm 的所有命令，开发者可以无痛的进行切换 。而使用 m onorepo 的
 功能，仅仅需要在根目录创建一个 pnpm-workspace.yaml 文件，并填写需要管理的目录，而之
 后这些目录将自动纳入 pnpm 的工作空间，并由它进行管理
-除了包依赖的管理以外，如何去管理众多项目的版本也是完善 M onorepo 工具链的重要部分，而其中最
-为出名的就是 Lerna，它通常会配合 Yarn 一起使用，另外一个则是新兴的版本管理工具 C hangesets，
+除了包依赖的管理以外，如何去管理众多项目的版本也是完善 Monorepo 工具链的重要部分，而其中最
+为出名的就是 Lerna，它通常会配合 Yarn 一起使用，另外一个则是新兴的版本管理工具 Changesets，
 它拥有自己的一套工作流程来契合 Mon orepo 的场景
 Lerna
 Lerna 是一个管理工具，用于管理包含多个软件包（p ackage）的 JavaScript 项目，其功能非常
 复杂和完善，它拥有包管理的功能，同时还兼顾版本管理，并支持全量发布和单独发布等功能。在
-业界实践中通常采用 Yarn 来处理依赖 安装和用 w orkspace 来管理项目中各个包，用 L erna 来处
+业界实践中通常采用 Yarn 来处理依赖 安装和用 w orkspace 来管理项目中各个包，用 Lerna 来处
 理依赖的更新和发布问题。这套技术组合完整的实现了 Mo norepo 中项目的包管理，更新到发布
 的全流程。
 Lerna 的工作流可以非常完善，它包含了包管理的流程以及各项参数配置，这里仅使用它的版本管
@@ -245,7 +204,7 @@ Turborepo 是一个用于 JavaScript/TypeScript monorepos 的快速构建系统�
 
 99turbo 的核心是永远不会重新构建已经 构建过的内容。t urbo 会把每次构建的产物与日志缓存起
 来，下次构建时只有文件发生变动的部分才会重新构建，没有变动的直接命中缓存并重现日志。
-turbo 拥有更智能的任务调度程序，充 分利用空闲 C PU，使得整体构建速度更快。另外，tu rbo 还
+turbo 拥有更智能的任务调度程序，充 分利用空闲 CPU，使得整体构建速度更快。另外，tu rbo 还
 具有远程缓存功能，可以与团队和 CI/CD 共享构建缓存。
 简单的示例来辅助理解 Turborepo 在构建中的优势，假设有如下的包依赖结构，其中我们要对
 app E 进行构建，它依赖4 个lib包的构建，而l ib包之间也有相互的依赖，特别l ib B 还同时依赖 l ib 
@@ -265,7 +224,7 @@ plugin 的形式 prettier 可以被集成到  Eslint 当中，使得两者的结
 可以利用 husky 和 lint-staged 两个工具在进行 g it 提交时进行增量代码的校验
 Commitlint
 Commitlint 是一个提交规范校验工具 ，它将帮助团队遵守一定的提交信息格式约定，默认采用 
-Convenional 提交规范  ，它也提供一定的配置允许使用者更改校验规则。同时，通过 H usky 添加
+Convenional 提交规范  ，它也提供一定的配置允许使用者更改校验规则。同时，通过 Husky 添加
 相应的 git hook，来达到提交自动校 验的提示的功能
 Commitizen 2.4、规范工具
 - 
@@ -327,6 +286,4 @@ create show生成/u ser有create, show方法
 2、创建c ontroller
 3、✍写单元测试
 4、✍写代码
-5、✍写文档编写常见A PI顺序
-
-104
+5、✍写文档编写常见API顺序

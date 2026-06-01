@@ -1,6 +1,6 @@
 ---
-title: "转载Ocsp Stapling 和 iOS 界⾯卡顿问题"
-date: 2026-06-01
+title: "转载Ocsp Stapling 和 iOS 界面卡顿问题"
+date: 2020-11-05
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -56,7 +56,4 @@ ssl_stapling on ;
 ssl_stapling_verify on ;
 ssl_trusted_certificate /etc/ssl/ca-certs .pem;
 ssl_stapling_responder http ://YOUR_PROXY_IP:8080/; 1
-3
 Nginx
-
-211

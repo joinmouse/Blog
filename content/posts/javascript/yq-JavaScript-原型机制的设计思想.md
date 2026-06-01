@@ -1,6 +1,6 @@
 ---
 title: "JavaScript 原型机制的设计思想"
-date: 2026-06-01
+date: 2021-12-15
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -24,9 +24,6 @@ this.name = name
 // 对这个构造函数使用 new ，就可以实例化他
 var dogA = new Dog('二哈')
 alert(dogA.name)   //二哈1
-3
-5
-7
 JavaScript
 
 129每个实例对象都有自己的属性和方法的副本，这当然是没问题的，但是这样就没法做到数据共享，浪费
@@ -45,11 +42,6 @@ var dogB = new DOG('二毛')
 //两个对象的 species 是独立的，当我们修改其中一个，不会影响到另外一个
 dogA.species = '猫科';
 alert(dogB.species); // 显示" 犬科 " ，  不受 dogA 的影响1
-3
-5
-7
-9
-11
 JavaScript
 
 130我们可以发现species属性放在prototype对象中，两个实例对象是共享的。修改prototype对象就会影
@@ -75,16 +67,4 @@ alert(dogB.species) // 显示" 犬科 "
 DOG.prototype .species = '猫科'
 alert(dogA.species); // 猫科
 alert(dogB.species); // 猫科1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
 JavaScript
-
-131

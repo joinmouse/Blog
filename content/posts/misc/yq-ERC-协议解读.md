@@ -1,6 +1,6 @@
 ---
 title: "ERC 协议解读"
-date: 2026-06-01
+date: 2024-04-20
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -22,10 +22,6 @@ function  convertToShares (uint256 assets) external  view returns (uint256 sh
 ares)
 function  convertToAssets (uint256 shares) external  view returns (uint256 as
 sets)1
-3
-5
-7
-9
 Solidity
 
 29提现，拿回资产// previewDesposit 预充值，充值前计算份额
@@ -44,11 +40,6 @@ function  mint(uint256 shares, address receiver ) external  view returns (uin
 t256 assets)
 function  maxMint(address receiver ) external  view returns (uint256 maxShare
 s)1
-3
-5
-7
-9
-11
 Solidity
 // withdraw
 function  previewWithdraw (uint256 assets) external  view returns (uint256 sh
@@ -64,11 +55,6 @@ function  redeem(uint256 shares, address receiver , address owner)
 external  view returns (uint256 assets)
 function  maxRedeem (address owner) external  view returns (uint256 maxShare
 s)1
-3
-5
-7
-9
-11
 Solidity
 
 302、实现一个简单的 erc4624功能
@@ -109,25 +95,6 @@ dress");
     // 计算资产转换为份额的比例
     function  convertToShares (uint256 assets) public view returns (uint25
 6) {1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
-39
 Solidity
 
 32        uint256 totalSupply  = totalSupply ();  // 当前 Vault 中所有用户持有的
@@ -174,25 +141,6 @@ s max");
         // 从发送者转移资产到合约
         asset.safeTransferFrom (msg.sender , address(this), assets);  // 发
 送资产到 vault 合约中41
-43
-45
-47
-49
-51
-53
-55
-57
-59
-61
-63
-65
-67
-69
-71
-73
-75
-77
-79
 
 33        // 铸造份额给接收者
         _mint(receiver , shares);      // 铸造份额给接收者
@@ -232,35 +180,12 @@ e");
         _burn(owner, shares);    // 销毁份额
         // 转移资产给接收者
         asset.safeTransfer (receiver , assets);    // 转移资产给接收者80
-82
-84
-86
-88
-90
-92
-94
-96
-98
-100
-102
-104
-106
-108
-110
-112
-114
-116
-118
-120
-122
 
 34标准协议参考： https://github.com/OpenZeppelin/openzeppelin-
 contracts/blob/master/contracts/interfaces/IERC4626. sol        emit Withdraw (msg.sender , receiver , owner, assets, shares);  // 
 事件上报
         return shares;
     }123
-125
-127
 
 35ERC 协议解读
 ERC-721 是以太坊上的 NFT 的标准，定义了代币的唯一性（每个 t okenId 唯一）和基础操作（查询拥
@@ -279,12 +204,6 @@ function  name() external  view returns (string _name);
 function  symbol() external  view returns (string _symbol);
 // 查询指定  NFT 的  token uri 信息
 function  tokenURI (uint256 _tokenId ) external  view returns (string);1
-3
-5
-7
-9
-11
-13
 view Solidity
 
 ### 362.3 转移（t ransfer)
@@ -297,10 +216,6 @@ function  getApproved (uint256 _tokenId ) external  view returns (address);
 // 查询拥有者 _owner 地址的授权情况 , 针对 setApprovalForAll 方法
 function  isApprovedForAll (address _owner, address _operator ) external  view 
 returns (bool);1
-3
-5
-7
-9
 approve Solidity
 // 将_tokenId 从 _from 地址转移到  _to 地址 ;
 function  TransferFrom (address _form, address _to, unint256  _tokeId)
@@ -315,12 +230,6 @@ external  payable;
 // 将_tokenId 从 _from 地址转移到  _to 地址 ; 附加校验 _to 地址是否为合约地址 ;
 function  safeTransferFrom (address _form, address _to, unint256  _tokeId)
 external  payable;1
-3
-5
-7
-9
-11
-13
 transfer Solidity
 
 37// SPDX-License-Identifier: MIT
@@ -358,24 +267,6 @@ ls;
         return _symbol;
     }
     // 查询指定  NFT 的  token uri 信息1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
 NFT Solidity
 
 38    function  tokenURI (uint256 _tokenId ) public view returns (string memor
@@ -421,22 +312,6 @@ l {
         emit ApprovalForAll (msg.sender , _operator , _approved );  // 触发批
 量授权事件
     }38
-40
-42
-44
-46
-48
-50
-52
-54
-56
-58
-60
-62
-64
-66
-68
-70
 
 39    function  isApprovedForAll (address _owner, address _operator ) public v
 iew returns (bool) {
@@ -477,25 +352,6 @@ or owner" );
 须是有效地址
         // 清除授权
         delete _tokenApprovals [tokenId];  // 清除tokenId 的授权72
-74
-76
-78
-80
-82
-84
-86
-88
-90
-92
-94
-96
-98
-100
-102
-104
-106
-108
-110
 
 40        // 更新拥有者的数量和所有者映射
         _balances [owner] -= 1;
@@ -537,25 +393,6 @@ es memory data) internal  {
         // 如果 to 是合约则调用  IERC721Receiver.onERC721Received
         if (_isContract (to)) {
             // 调用合约的  onERC721Received 方法 , 并检查返回值是否正确112
-114
-116
-118
-120
-122
-124
-126
-128
-130
-132
-134
-136
-138
-140
-142
-144
-146
-148
-150
 
 41OpenZeppelin第三方实现： https://github.com/OpenZeppelin/openzeppelin-
 contracts/blob/master/contracts/token/ERC721/ERC721.sol
@@ -590,14 +427,6 @@ or, "unsafe recipient" );
 // @notice 极简  IERC721Receiver 接口，用于  safeTransfer 检测
 interface  IERC721Receiver  {
 function onERC721Received (address operator ,address from,uint256 tok152
-154
-156
-158
-160
-162
-164
-166
-168
 
 42ERC 协议解读
 ERC20 标准提供了一组基础接口，使得代币可以在以太坊生态系统中方便地创建、管理和交换
@@ -673,10 +502,6 @@ urn (uint256)
 // 转账
 function  transferFrom (address from, address to, uint256 value)
 public virtual return (bool)1
-3
-5
-7
-9
 Solidity
 
 45// SPDX-License-Identifier: MIT
@@ -715,25 +540,6 @@ lSupply_ ) {
     function  totalSupply () public view returns (uint256) {
         return _totalSupply ;
     }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
-39
 Solidity
 
 46    // 查询某个地址的代币余额
@@ -774,25 +580,6 @@ s (uint256) {
     function  transferFrom (address from, address to, uint256 amount) publi
 c returns (bool) {
         address spender = msg.sender ; // 获取调用者地址40
-42
-44
-46
-48
-50
-52
-54
-56
-58
-60
-62
-64
-66
-68
-70
-72
-74
-76
-78
 
 47event:  事件主要用于“ 对外发布可检索 、低成本的操作/状态变更记录”
 我们一般不自己实现，而是基于 OpenZeppelin  实现。我们可以把 OpenZeppelin看成一个我们
@@ -819,16 +606,7 @@ eeds allowance" ); // 检查授权额度是否足够
         return true;
     }
 }80
-82
-84
-86
-88
-90
-92
-94
 
 48ERC20的实现： https://github.com/OpenZeppelin/openzeppelin-
 contracts/blob/master/contracts/token/ERC20/ERC20.sol
 可以看到我们使用 openZeppelin这个包的时候是十分简单 的
-
-49

@@ -1,6 +1,6 @@
 ---
 title: "JavaScript 之原型到原型链"
-date: 2026-06-01
+date: 2022-02-20
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -24,10 +24,6 @@ var person1 = new Person();
 var person2 = new Person();
 console.log(person1.name)  // joinmouse
 console.log(person2.name)  // joinmouse1
-3
-5
-7
-9
 JavaScript
 
 124每一个JavaScript对象(除了 null )都具有的一个属性叫__proto__，这个属性会指向该对象的原型，这个
@@ -39,8 +35,6 @@ function  Person() {
 }
 var person = new Person();
 console.log(person.__proto__  === Person.prototype );  // true1
-3
-5
 JavaScript
 
 125每个原型都有一个 constructor 属性指向对应的构造函数三、constructor
@@ -48,7 +42,6 @@ function  Person() {
   // 业务...
 }
 console.log(Person === Person.prototype .constructor ); // true1
-3
 JavaScript
 
 126上面这张图就就可以完整的反映出来构造函数、实例原型、和实例的关系，这个关系很重要，可以说后
@@ -71,17 +64,10 @@ var person2 = new Person();
 person1.name = 'cloud'
 console.log(person1.name)  // cloud
 console.log(person2.name)  // joinmouse1
-3
-5
-7
-9
 JavaScript
 
 127那么那 Object.prototype 的原型呢？是null
 关于null和undefine的区别，我们可以参考阮一峰的文章《undefined与null的区别》
 console.log(Object.prototype .__proto__  === null) // true
 // person -> Person -> Object.prototype  -> null1
-3
 JavaScript
-
-128

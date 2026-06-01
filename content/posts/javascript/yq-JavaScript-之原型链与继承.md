@@ -1,6 +1,6 @@
 ---
 title: "JavaScript 之原型链与继承"
-date: 2026-06-01
+date: 2022-04-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -24,11 +24,6 @@ console.log(object1.hasOwnProperty ('toString' ))
 //false, toString 来自原型链 Object.prototype 上的属性
 // 原型链关系如下 :
 // object1 ---> Object.prototype ---> null1
-3
-5
-7
-9
-11
 JavaScript
 
 114在 JavaScript 中，构造器其实就是一个普通的函数。当使用 new 操作符 来作用这个函数时，它
@@ -46,13 +41,6 @@ function  f(){
 // 函数都继承于  Function.prototype, Function.prototype 中包含  call, bind 等方法
 // 原型链如下 :
 // f ---> Function.prototype ---> Object.prototype ---> null1
-3
-5
-7
-9
-11
-13
-15
 JavaScript
 function  Graph() {
   this.vertices  = []
@@ -68,13 +56,6 @@ var g = new Graph()
 // g 被实例化时， g.[[Prototype]] 指向了  Graph.prototype
 // 原型链如下：
 // g ---> Object.prototype ---> null1
-3
-5
-7
-9
-11
-13
-15
 JavaScript
 
 115ES5中，我们可以通过Object.create()来创建一个新对象
@@ -92,12 +73,6 @@ var d = Object.create(null)
 // d ---> null
 console.log(d.hasOwnProperty ); 
 // undefined, 因为 d 没有继承 Object.prototype1
-3
-5
-7
-9
-11
-13
 JavaScript
 
 116有了上面的基础，我们接下来看拓展原型链常用到的四种方法三、使用不同的方法拓展原型链
@@ -123,18 +98,6 @@ class Square extends Polygon {
 var square = new Square(2)
 // 原型链如下：
 // square ---> Square ---> Polygon ---> Object.prototype ---> null1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
 JavaScript
 
 117支持目前以及所有可想象到的浏览器，方法非常快，非常符合标准，并且充分利用JIT优化
@@ -154,15 +117,6 @@ let inst = new Bar()
 // inst ---> Bar(proto) ---> Foo --> Object.prototype ---> null
 console.log(inst.foo_prop )  // foo_val
 console.log(inst.bar_prop )  // bar_val1
-3
-5
-7
-9
-11
-13
-15
-17
-19
 JavaScript
 
 118支持所有现代非微软版本以及 IE11 以上版本的浏览器，但是生产环境中并不推荐使用
@@ -193,20 +147,6 @@ var inst = {
 };
 console.log(inst.foo_prop )
 console.log(inst.bar_prop )1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
 JavaScript
 
 119object.create支持是ES5的方法，支持IE8以上的浏览器
@@ -231,18 +171,6 @@ Bar.prototype  = proto
 var inst = new Bar()
 console.log(inst.foo_prop )
 console.log(inst.bar_prop )1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
 JavaScript
 
 120ES6的方法，这个方式表现并不好，应该被弃用。如果你在生产环境中使用这个方法，那么快速运行 
@@ -266,14 +194,6 @@ Bar.prototype  = proto
 var inst = new bar;
 console.log(inst.foo_prop )
 console.log(inst.bar_prop )1
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
 function  Foo() {
 }
@@ -281,9 +201,6 @@ Foo.prototype .doSomeThing  = function () {
 //...
 }
 var o = new Foo()1
-3
-5
-7
 JavaScript
 
 121当执行o.do的时候(实际上没有整个方法，只有doSomeThing)，会沿着原型链一层层的找，值得注意的
@@ -291,7 +208,6 @@ JavaScript
 例"的，接下来我们看继承的实现。var o = new Object()
 o.__proto__   = Foo.prototype
 Foo.call(o)1
-3
 JavaScript
 // Shape - 父类 (superclass)
 function  Shape() {
@@ -320,19 +236,6 @@ e); // true
 console.log('Is rect an instance of Shape?' , rect instanceof  Shape); // tr
 ue
 rect.move(1, 1);  // 'Shape moved.' 继承父类的方法1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
 JavaScript
 
 122使用原型链来封装一个继承函数也可以
@@ -350,11 +253,6 @@ CN/docs/Web/JavaScript/Reference/Global_Objects/Object/createfunction  extend(Ch
     // 可以直接调用父对象的方法。这一行放在这里，只是为了实现继承的完备性，纯属备用性质
 　　Child.uber = Parent.prototype
 }1
-3
-5
-7
-9
-11
 JavaScript
 function  extend2(Child, Parent) {
    var p = Parent.prototype
@@ -364,10 +262,4 @@ function  extend2(Child, Parent) {
    }
    c.uber = p
 }1
-3
-5
-7
-9
 JavaScript
-
-123

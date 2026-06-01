@@ -1,6 +1,6 @@
 ---
-title: "JavaScript 异步编程 (): ⽣成器和协程"
-date: 2026-06-01
+title: "JavaScript 异步编程 (): 生成器和协程"
+date: 2020-12-10
 tags: ["语雀"]
 source_kind: yuque
 ---
@@ -23,12 +23,6 @@ ES6语法中引入了生成器这一个函数，那么什么是生成器函数�
   }
 }
 foo()1
-3
-5
-7
-9
-11
-13
 JavaScript
 
 191观察上面的代码我们会发现genDemo函数并不是一次性的执行完的，而是全局的代码和genDemo函数
@@ -62,17 +56,6 @@ console.log(gen.next().value)  // 开始执行第三段  generator 3
 console.log('main 3' )  //main 3
 console.log(gen.next().value)  // 执行结束  generator 4
 console.log('main 4' )  //main 41
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
 JavaScript
 
 192现在 A 协程暂停执行，B 协程恢复执行；同样，也可以从 B 协程中启动 A 协程。通常，如果从 A 协程
@@ -107,9 +90,6 @@ gen.next 来配合完成的。
 }).catch((error) => {
   console.log(error)
 })1
-3
-5
-7
 JavaScript
 //foo 函数
 function * foo() {
@@ -133,17 +113,6 @@ console.log('res1')
 console.log('res2')
   console.log(res2)
 })1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
 JavaScript
 
 1952、在父协程中通过执行 gen.next 把主线程的控制权交给 gen 协程。
@@ -167,9 +136,6 @@ function  f(m) {
   return m * 2;
 }
 f(x + 5)1
-3
-5
-7
 JavaScript
 
 196还有一种是"传名调用"，即直接将表达式 x+5 传入函数体，只在用到它的时候去求值。Haskell语言就
@@ -180,19 +146,15 @@ JavaScript
 面例子中我们用thunk函数定义一下f(x + 5)
 // 传值调用时 , 等价于
 f(6)1
-3
 JavaScript
 f(x + 5)
 // 传名调用时，等于
 (x + 5) * 21
-3
 JavaScript
 function  f(a, b){
   return b
 }
 f(3 * x * x - 2 * x - 1, x)1
-3
-5
 JavaScript
 
 197JavaScript 语言是传值调用，它的 Thunk 函数含义有所不同。
@@ -211,13 +173,6 @@ var thunk = function  () {
 function  f(thunk) {
   return thunk() * 2;
 }1
-3
-5
-7
-9
-11
-13
-15
 JavaScript
 // 正常版本的 readFile （多参数版本）
 fs.readFile (fileName , callback );
@@ -229,11 +184,6 @@ var Thunk = function  (fileName ) {
 }
 var readFileThunk  = Thunk(fileName )
 readFileThunk (callback )1
-3
-5
-7
-9
-11
 JavaScript
 
 198你可能会问， Thunk 函数有什么用？回答是以前确实没什么用，但是 ES6 有了 Generator 函数，
@@ -246,9 +196,6 @@ Generator 函数可以自动执行5、Generator + Thunk库
     }
   }
 }1
-3
-5
-7
 JavaScript
 function * genDemo() {
 console.log(" 开始执行第一段  ")
@@ -269,16 +216,6 @@ while(!res.done) {
 console.log(res.value)
   res = gen.next()
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
 JavaScript
 
 199上面的代码中Generator 函数 gen 会自动执行完所有步骤，但是这并不适合于异步操作。如果必须保
@@ -299,10 +236,6 @@ var gen = function* (){
   var r2 = yield readFileThunk('/etc/shells')
   console.log(r2.toString())
 }1
-3
-5
-7
-9
 Plain Text
 let g = gen()
 var r1 = g.next()
@@ -315,12 +248,6 @@ if(err) throw err;
     g.next(data);
   })
 })1
-3
-5
-7
-9
-11
-13
 Plain Text
 
 200Thunk 函数真正的威力，在于可以自动执行 Generator 函数。下面就是一个基于 Thunk 函数的 
@@ -359,25 +286,6 @@ function * genDemo() {
     }
 }
 run(genDemo)1
-3
-5
-7
-9
-11
-13
-15
-17
-19
-21
-23
-25
-27
-29
-31
-33
-35
-37
-39
 JavaScript
 
 202上面代码中的run函数，就是一个 Generator 函数自动化执行器。内部的next函数就是 Thunk 的回调函
@@ -398,9 +306,6 @@ gen 2
 开始执行第三段
 gen 3
 执行结束1
-3
-5
-7
 JavaScript
 
 203将Generator函数只要传入co函数，程序就会自动的执行
@@ -423,15 +328,10 @@ co模块其实就是将这两种自动执行器（Thunk 函数和 Promise 对象
     console.log(response2 )
 }
 co(foo())1
-3
-5
-7
-9
 JavaScript
 co(gen).then(res => {
 console.log("Generator 函数执行完成 ")
 })1
-3
 JavaScript
 
 204接下来我们手动的去执行上面的 Generator 函数
@@ -450,14 +350,6 @@ var gen = function * (){
   console.log(f1.toString ())
   console.log(f2.toString ())
 }1
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
 var g = gen()
 g.next.value.then(function (data) => {
@@ -465,9 +357,6 @@ g.next(data).value.then(function (data){
     g.next(data)
   })              
 })1
-3
-5
-7
 JavaScript
 
 205上面代码中，只要 Generator 函数还没执行到最后一步， next 函数就调用自身，以此实现自动执
@@ -490,21 +379,12 @@ let g = gen()
   
   next()
 }1
-3
-5
-7
-9
-11
-13
-15
 JavaScript
 function  co(gen) {
   var ctx = this;
   return new Promise(function (resolve, reject) {
   });
 }1
-3
-5
 JavaScript
 
 206接下来，co将Generator函数的内部指针对象的next方法，包装成onFulfilled函数，这主要是为了捕捉
@@ -513,7 +393,6 @@ JavaScript
     if (typeof gen === 'function' ) gen = gen.call(ctx);
     if (!gen || typeof gen.next !== 'function' ) return resolve(gen);
 });1
-3
 JavaScript
 function  co(gen) {
   var ctx = this;
@@ -532,15 +411,6 @@ function  co(gen) {
     }
   })
 }1
-3
-5
-7
-9
-11
-13
-15
-17
-19
 JavaScript
 
 207co 支持并发的异步操作，即允许某些操作同时进行，等到它们全部完成，才进行下一步。这时，要将并
@@ -565,14 +435,6 @@ ject, '
     )
   )
 }1
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
 
 208// 数组的写法
@@ -591,14 +453,4 @@ co(function * () {
   };
   console.log(res);
 }).catch(onerror);1
-3
-5
-7
-9
-11
-13
-15
-17
 JavaScript
-
-209
