@@ -39,9 +39,11 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   const fm = (mod.frontmatter as Record<string, any>) || (mod as Record<string, any>);
   // slug 规则：去掉路径和 .md 后缀。
   //   GitHub Issues 来源：0001-xxx.md → "0001"（保留四位数字前缀，去掉描述）
-  //   简书来源：         j-xxxxx.md → "j-xxxxx"（整个文件名）
+  //   简书来源：         j-xxxxx-标题.md → "j-xxxxx"（只取 j-前缀+slug 部分）
   const filename = (filepath.split('/').pop() || '').replace(/\.md$/, '');
-  const slug = /^\d+-/.test(filename) ? filename.match(/^\d+/)![0] : filename;
+  const slug = /^\d+-/.test(filename)
+    ? filename.match(/^\d+/)![0]
+    : filename.match(/^j-[0-9a-f]+/)?.[0] || filename;
   // date 可能是 string ("2018-01-25") 或 Date 对象（YAML 解析后）。
   // 统一规整为 YYYY-MM-DD 字符串。
   let date = '';
