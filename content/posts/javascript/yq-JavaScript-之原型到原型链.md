@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 之原型到原型链"
 date: 2022-02-20
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "浏览器消息队列和事件循环系统"
 date: 2020-06-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

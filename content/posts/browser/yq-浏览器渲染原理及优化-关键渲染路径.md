@@ -1,7 +1,7 @@
 ---
 title: "浏览器渲染原理及优化 (): 关键渲染路径"
 date: 2021-08-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

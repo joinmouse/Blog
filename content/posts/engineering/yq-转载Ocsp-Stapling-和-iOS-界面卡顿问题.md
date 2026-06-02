@@ -1,7 +1,7 @@
 ---
 title: "转载Ocsp Stapling 和 iOS 界面卡顿问题"
 date: 2020-11-05
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

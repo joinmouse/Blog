@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 原型机制的设计思想"
 date: 2021-12-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

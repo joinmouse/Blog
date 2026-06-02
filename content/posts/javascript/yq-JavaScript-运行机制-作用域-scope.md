@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 运行机制 (): 作用域 (scope)"
 date: 2021-04-10
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

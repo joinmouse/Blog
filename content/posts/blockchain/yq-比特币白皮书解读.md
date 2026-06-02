@@ -1,7 +1,7 @@
 ---
 title: "比特币白皮书解读"
 date: 2024-01-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "关于不可变数据的思考"
 date: 2020-02-10
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

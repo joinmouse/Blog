@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 异步编程 (): Promise"
 date: 2020-10-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

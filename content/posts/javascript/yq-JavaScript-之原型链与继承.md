@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 之原型链与继承"
 date: 2022-04-10
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

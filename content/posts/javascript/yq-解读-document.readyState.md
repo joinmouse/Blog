@@ -1,7 +1,7 @@
 ---
 title: "解读 | document.readyState"
 date: 2022-06-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

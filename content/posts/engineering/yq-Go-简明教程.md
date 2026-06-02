@@ -1,7 +1,7 @@
 ---
 title: "Go 简明教程"
 date: 2023-04-10
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 

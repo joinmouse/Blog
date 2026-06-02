@@ -1,7 +1,7 @@
 ---
 title: "Ruby"
 date: 2022-10-15
-tags: ["语雀"]
+tags: []
 source_kind: yuque
 ---
 
