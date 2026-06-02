@@ -16,7 +16,6 @@ const categoryLabels: Record<string, string> = {
   java: 'Java',
   node: 'Node.js',
   blockchain: 'Blockchain',
-  misc: '其他',
 };
 
 const route = useRoute();

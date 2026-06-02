@@ -111,7 +111,6 @@ export function getAllCategories(): { category: string; count: number; label: st
     java: 'Java',
     node: 'Node.js',
     blockchain: 'Blockchain',
-    misc: '其他',
   };
   const counts = new Map<string, number>();
   for (const p of posts) {

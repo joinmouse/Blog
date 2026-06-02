@@ -16,7 +16,6 @@ const categoryLabels: Record<string, string> = {
   java: 'Java',
   node: 'Node',
   blockchain: 'Web3',
-  misc: '其他',
 };
 
 function formatDate(d: string): string {
