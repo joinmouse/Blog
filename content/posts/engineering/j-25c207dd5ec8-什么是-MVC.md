@@ -2,7 +2,7 @@
 title: "什么是  MVC"
 date: 2017-09-07
 slug_jianshu: 25c207dd5ec8
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/25c207dd5ec8"
 source_kind: jianshu

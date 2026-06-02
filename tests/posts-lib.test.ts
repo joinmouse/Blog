@@ -33,7 +33,7 @@ describe('posts library', () => {
   it('looks up a jianshu post by slug', () => {
     const post = getPostBySlug('j-0fc76e1b1558');
     expect(post).toBeDefined();
-    expect(post!.tags).toContain('简书');
+    expect(post).toBeTruthy();
   });
 
   it('returns undefined for unknown slug', () => {
@@ -47,10 +47,9 @@ describe('posts library', () => {
     const ts = tags.find((t) => t.tag === 'TypeScript');
     expect(ts).toBeDefined();
     expect(ts!.count).toBe(11);
-    // 简书 tag should match the imported jianshu count
+    // 简书 tag removed — verify it no longer exists
     const js = tags.find((t) => t.tag === '简书');
-    expect(js).toBeDefined();
-    expect(js!.count).toBeGreaterThanOrEqual(40);
+    expect(js).toBeUndefined();
   });
 
   it('filters posts by tag', () => {

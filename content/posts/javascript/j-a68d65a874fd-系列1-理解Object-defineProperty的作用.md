@@ -2,7 +2,7 @@
 title: "系列1-理解Object.defineProperty的作用"
 date: 2017-11-20
 slug_jianshu: a68d65a874fd
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/a68d65a874fd"
 source_kind: jianshu

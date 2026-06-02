@@ -2,7 +2,7 @@
 title: "从另一个角度思考JS中的new"
 date: 2018-11-15
 slug_jianshu: ab89bbac9041
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/ab89bbac9041"
 source_kind: jianshu

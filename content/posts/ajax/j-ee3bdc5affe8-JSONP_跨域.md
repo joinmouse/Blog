@@ -2,7 +2,7 @@
 title: "JSONP_跨域"
 date: 2017-05-20
 slug_jianshu: ee3bdc5affe8
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/ee3bdc5affe8"
 source_kind: jianshu

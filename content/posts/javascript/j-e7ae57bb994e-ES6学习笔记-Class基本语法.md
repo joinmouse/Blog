@@ -2,7 +2,7 @@
 title: "ES6学习笔记—Class基本语法"
 date: 2017-07-16
 slug_jianshu: e7ae57bb994e
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/e7ae57bb994e"
 source_kind: jianshu

@@ -2,7 +2,7 @@
 title: "三、深入之作用域链"
 date: 2017-06-08
 slug_jianshu: 81b8e2ea8a5b
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/81b8e2ea8a5b"
 source_kind: jianshu

@@ -2,7 +2,7 @@
 title: "jQuery源码解读-理解架构"
 date: 2017-08-01
 slug_jianshu: 9cc34dbabe80
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/9cc34dbabe80"
 source_kind: jianshu

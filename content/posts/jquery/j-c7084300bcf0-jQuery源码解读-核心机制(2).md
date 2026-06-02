@@ -2,7 +2,7 @@
 title: "jQuery源码解读-核心机制(2)"
 date: 2017-08-12
 slug_jianshu: c7084300bcf0
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/c7084300bcf0"
 source_kind: jianshu

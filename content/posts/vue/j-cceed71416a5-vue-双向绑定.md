@@ -2,7 +2,7 @@
 title: "vue-双向绑定"
 date: 2017-11-05
 slug_jianshu: cceed71416a5
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/cceed71416a5"
 source_kind: jianshu

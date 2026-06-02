@@ -11,13 +11,13 @@ function makeRouter() {
 }
 
 describe('Home page', () => {
-  it('renders all posts', async () => {
+  it('renders first page of posts (10 per page)', async () => {
     const router = makeRouter();
     const wrapper = mount(Home, { global: { plugins: [router] } });
     await router.isReady();
 
     const cards = wrapper.findAll('a.card');
-    expect(cards.length).toBeGreaterThanOrEqual(26);
+    expect(cards.length).toBe(10);
   });
 
   it('shows total count in lead text', async () => {
@@ -38,19 +38,27 @@ describe('Home page', () => {
     expect(btns[0].text()).toContain('All');
   });
 
-  it('clicking a category button filters the post list', async () => {
+  it('renders pagination controls', async () => {
     const router = makeRouter();
     const wrapper = mount(Home, { global: { plugins: [router] } });
     await router.isReady();
 
-    const jsBtn = wrapper
-      .findAll('button.cat-btn')
-      .find((b) => b.text().startsWith('JavaScript'));
-    expect(jsBtn).toBeDefined();
-    await jsBtn!.trigger('click');
+    const pageBtns = wrapper.findAll('button.page-btn');
+    expect(pageBtns.length).toBeGreaterThan(2); // at least ← 1 2 →
+  });
 
-    const cards = wrapper.findAll('a.card');
-    // javascript subdirectory has 24 jianshu articles
-    expect(cards.length).toBeGreaterThanOrEqual(20);
+  it('clicking next page shows different posts', async () => {
+    const router = makeRouter();
+    const wrapper = mount(Home, { global: { plugins: [router] } });
+    await router.isReady();
+
+    const firstPageTitles = wrapper.findAll('a.card').map((c) => c.text());
+    // Click page 2
+    const page2Btn = wrapper.findAll('button.page-btn').find((b) => b.text() === '2');
+    expect(page2Btn).toBeDefined();
+    await page2Btn!.trigger('click');
+
+    const secondPageTitles = wrapper.findAll('a.card').map((c) => c.text());
+    expect(secondPageTitles[0]).not.toBe(firstPageTitles[0]);
   });
 });

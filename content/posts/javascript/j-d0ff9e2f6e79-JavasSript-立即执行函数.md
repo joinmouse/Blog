@@ -2,7 +2,7 @@
 title: "JavasSript-立即执行函数"
 date: 2017-08-01
 slug_jianshu: d0ff9e2f6e79
-tags: ["简书"]
+tags: []
 state: open
 source: "https://www.jianshu.com/p/d0ff9e2f6e79"
 source_kind: jianshu
