@@ -1,8 +1,7 @@
 ---
 title: "Go 简明教程"
 date: 2023-04-10
-tags: []
-source_kind: yuque
+tags: ["工程化"]
 ---
 
 ## 1、数组、切片和映射

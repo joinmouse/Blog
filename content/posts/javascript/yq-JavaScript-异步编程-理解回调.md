@@ -1,8 +1,7 @@
 ---
-title: "JavaScript 异步编程 (): 理解回调"
+title: "JavaScript 异步编程 — 理解回调"
 date: 2020-08-20
-tags: []
-source_kind: yuque
+tags: ["异步编程"]
 ---
 
 我们在使用 JavaScript 的时候，经常会遇到大量的回调函数，例如浏览器中使用 setTimeout 来设置定时器，使用 XMLHTTPReqest 去异步的请求数据，Node 中使用 readFile 读取文件。这些操作都需要调用 API 传入回调函数，然后浏览器或者 Node 执行的结果会通过回调函数来触发。

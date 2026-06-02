@@ -46,7 +46,8 @@ describe('posts library', () => {
     // TypeScript tag should still have 11 (from GitHub Issues)
     const ts = tags.find((t) => t.tag === 'TypeScript');
     expect(ts).toBeDefined();
-    expect(ts!.count).toBe(11);
+    // TypeScript tag: 11 from GitHub Issues + 2 from yuque
+    expect(ts!.count).toBe(15);
     // 简书 tag removed — verify it no longer exists
     const js = tags.find((t) => t.tag === '简书');
     expect(js).toBeUndefined();
@@ -54,7 +55,7 @@ describe('posts library', () => {
 
   it('filters posts by tag', () => {
     const tsPosts = getPostsByTag('TypeScript');
-    expect(tsPosts.length).toBe(11);
+    expect(tsPosts.length).toBe(15);
     expect(tsPosts.every((p) => p.tags.includes('TypeScript'))).toBe(true);
   });
 });

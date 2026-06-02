@@ -6,7 +6,7 @@ tags: ["JS深入浅出"]
 state: open
 source: "https://github.com/joinmouse/Blog/issues/26"
 ---
-# JavaScript精进 | 解读闭包(Closure)
+## JavaScript精进 | 解读闭包(Closure)
 
 看过很多关于关于闭包的博客解释，要么太学术了，要么就是讲的不太清楚。这篇文章主要写什么是闭包？闭包有什么用？
 

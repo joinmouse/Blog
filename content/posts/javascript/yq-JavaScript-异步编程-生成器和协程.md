@@ -1,8 +1,7 @@
 ---
-title: "JavaScript 异步编程 (): 生成器和协程"
+title: "JavaScript 异步编程 — 生成器和协程"
 date: 2020-12-10
-tags: []
-source_kind: yuque
+tags: ["异步编程"]
 ---
 
 我们知道 ES7 中引入了 async/await，这是 JavaScript 异步编程的终极解决方案，提供了不阻塞主线程的情况下使用同步代码访问资源的能力，并且使代码逻辑更加清晰。参考下面的代码：

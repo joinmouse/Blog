@@ -4,6 +4,7 @@ import Post from './pages/Post.vue';
 import Tag from './pages/Tag.vue';
 import About from './pages/About.vue';
 import Life from './pages/Life.vue';
+import Projects from './pages/Projects.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,7 @@ const router = createRouter({
     { path: '/posts/:slug', name: 'post', component: Post, props: true },
     { path: '/tags/:tag', name: 'tag', component: Tag, props: true },
     { path: '/about', name: 'about', component: About },
+    { path: '/projects', name: 'projects', component: Projects },
     { path: '/life', name: 'life', component: Life },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],

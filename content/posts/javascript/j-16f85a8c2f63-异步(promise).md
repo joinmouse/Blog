@@ -2,7 +2,7 @@
 title: "异步(promise)"
 date: 2017-12-02
 slug_jianshu: 16f85a8c2f63
-tags: []
+tags: ["异步编程"]
 state: open
 source: "https://www.jianshu.com/p/16f85a8c2f63"
 source_kind: jianshu

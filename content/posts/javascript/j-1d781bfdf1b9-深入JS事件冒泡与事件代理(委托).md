@@ -2,7 +2,7 @@
 title: "深入JS事件冒泡与事件代理(委托)"
 date: 2018-05-22
 slug_jianshu: 1d781bfdf1b9
-tags: []
+tags: ["事件系统"]
 state: open
 source: "https://www.jianshu.com/p/1d781bfdf1b9"
 source_kind: jianshu

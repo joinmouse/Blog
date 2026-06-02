@@ -2,7 +2,7 @@
 title: "第二篇、HTTP状态码"
 date: 2018-04-02
 slug_jianshu: cd1bf4d9cee8
-tags: []
+tags: ["HTTP"]
 state: open
 source: "https://www.jianshu.com/p/cd1bf4d9cee8"
 source_kind: jianshu

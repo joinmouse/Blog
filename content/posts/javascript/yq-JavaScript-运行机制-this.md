@@ -1,8 +1,7 @@
 ---
-title: "JavaScript 运行机制 (): this"
+title: "JavaScript 运行机制 — this"
 date: 2021-06-20
-tags: []
-source_kind: yuque
+tags: ["this"]
 ---
 
 之前的文章写了词法作用域、作用域链以及闭包，这篇将写另外一个很重要的点就是 this，关于 this 其实之前也写了不少文章，这次还是从执行上下文的视角去看待 this。

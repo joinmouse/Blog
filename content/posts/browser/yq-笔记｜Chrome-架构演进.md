@@ -1,8 +1,7 @@
 ---
 title: "笔记｜Chrome 架构演进"
 date: 2020-04-10
-tags: []
-source_kind: yuque
+tags: ["浏览器"]
 ---
 
 ## 1、单进程浏览器时代

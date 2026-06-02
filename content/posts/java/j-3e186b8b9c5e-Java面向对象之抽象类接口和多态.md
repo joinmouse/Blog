@@ -2,7 +2,7 @@
 title: "Java面向对象之抽象类、接口和多态"
 date: 2019-03-19
 slug_jianshu: 3e186b8b9c5e
-tags: []
+tags: ["Java", "面向对象", "TypeScript"]
 state: open
 source: "https://www.jianshu.com/p/3e186b8b9c5e"
 source_kind: jianshu

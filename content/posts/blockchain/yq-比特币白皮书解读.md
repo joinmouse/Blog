@@ -1,8 +1,7 @@
 ---
 title: "比特币白皮书解读"
 date: 2024-01-15
-tags: []
-source_kind: yuque
+tags: ["比特币"]
 ---
 
 ## 1、比特币的诞生背景与核心价值

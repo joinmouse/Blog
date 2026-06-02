@@ -1,8 +1,7 @@
 ---
-title: "JavaScript 异步编程 (): Promise"
+title: "JavaScript 异步编程 — Promise"
 date: 2020-10-15
-tags: []
-source_kind: yuque
+tags: ["异步编程"]
 ---
 
 在上一篇文章中我们说到了微任务并以 Promise 做了一些演示，现在浏览器很多新加的 API 都是建立在 Promise 之上，新的前端框架也大量的使用 Promise，那么这篇文章就会重点的写下 Promise。

@@ -2,7 +2,7 @@
 title: "canvas-进度条"
 date: 2018-12-07
 slug_jianshu: 8e382b6f2c94
-tags: []
+tags: ["Canvas"]
 state: open
 source: "https://www.jianshu.com/p/8e382b6f2c94"
 source_kind: jianshu

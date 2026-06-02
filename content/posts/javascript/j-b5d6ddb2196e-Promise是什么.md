@@ -2,7 +2,7 @@
 title: "Promise是什么?"
 date: 2017-09-17
 slug_jianshu: b5d6ddb2196e
-tags: []
+tags: ["异步编程"]
 state: open
 source: "https://www.jianshu.com/p/b5d6ddb2196e"
 source_kind: jianshu

@@ -2,7 +2,7 @@
 title: "Vue组件中的data为什么必须是一个函数"
 date: 2018-11-14
 slug_jianshu: f3e774c57356
-tags: []
+tags: ["Vue"]
 state: open
 source: "https://www.jianshu.com/p/f3e774c57356"
 source_kind: jianshu

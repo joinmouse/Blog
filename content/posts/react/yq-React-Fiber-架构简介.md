@@ -1,8 +1,7 @@
 ---
 title: "React | Fiber 架构简介"
 date: 2020-03-15
-tags: []
-source_kind: yuque
+tags: ["浏览器", "React", "Fiber"]
 ---
 
 ## 1、fiber 之前是怎么样的，为什么需要 fiber

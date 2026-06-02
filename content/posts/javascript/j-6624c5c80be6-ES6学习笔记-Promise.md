@@ -2,7 +2,7 @@
 title: "ES6学习笔记——Promise"
 date: 2017-07-11
 slug_jianshu: 6624c5c80be6
-tags: []
+tags: ["异步编程", "ES6"]
 state: open
 source: "https://www.jianshu.com/p/6624c5c80be6"
 source_kind: jianshu

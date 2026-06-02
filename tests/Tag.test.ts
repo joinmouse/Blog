@@ -19,9 +19,9 @@ describe('Tag page', () => {
     await flushPromises();
 
     const cards = wrapper.findAll('a.card');
-    expect(cards.length).toBe(11);
+    expect(cards.length).toBe(15);
     expect(wrapper.text()).toContain('TypeScript');
-    expect(wrapper.text()).toContain('11');
+    expect(wrapper.text()).toContain('15');
   });
 
   it('shows zero posts for an unknown tag', async () => {

@@ -110,6 +110,7 @@ export function getAllCategories(): { category: string; count: number; label: st
     browser: '浏览器',
     java: 'Java',
     node: 'Node.js',
+    react: 'React',
     blockchain: 'Blockchain',
   };
   const counts = new Map<string, number>();

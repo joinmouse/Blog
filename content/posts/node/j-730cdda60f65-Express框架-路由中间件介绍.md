@@ -2,7 +2,7 @@
 title: "Express框架-路由、中间件介绍"
 date: 2017-09-21
 slug_jianshu: 730cdda60f65
-tags: []
+tags: ["Express", "Node.js"]
 state: open
 source: "https://www.jianshu.com/p/730cdda60f65"
 source_kind: jianshu
@@ -81,7 +81,7 @@ var cb2 = function (req, res) {
 app.get('/example/c', [cb0, cb1, cb2]); 
 ```
 
-# 3、中间件
+## 3、中间件
 
 _中间件(middleware)_是一个函数，可以访问请求对象(request)，响应对象(respone),与web应用中处于请求-响应循环流程中的中间件，一般命名为next的变量。还是先直接看demo吧
 

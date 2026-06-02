@@ -42,7 +42,7 @@ function goPage(page: number) {
     <header class="intro">
       <h1>Notes</h1>
       <p class="lead">
-        前端工程的小笔记 —— JavaScript、TypeScript、Vue 与一些杂感。
+        编程笔记 —— JavaScript、TypeScript、Vue、区块链与更多。
         共 <strong>{{ allPosts.length }}</strong> 篇。
       </p>
     </header>

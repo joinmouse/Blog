@@ -2,7 +2,7 @@
 title: "继承(ES6)"
 date: 2017-11-28
 slug_jianshu: f23c03f43dcc
-tags: []
+tags: ["Java", "面向对象", "ES6", "继承"]
 state: open
 source: "https://www.jianshu.com/p/f23c03f43dcc"
 source_kind: jianshu

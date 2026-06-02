@@ -1,8 +1,7 @@
 ---
-title: "JavaScript 运行机制 (): 作用域 (scope)"
+title: "JavaScript 运行机制 — 作用域 (scope)"
 date: 2021-04-10
-tags: []
-source_kind: yuque
+tags: ["作用域"]
 ---
 
 上一篇文章中我们写到了 var 声明的变量会存在变量提升的内容，正是由于 JavaScript 存在变量提升这种特性，从而导致了很多与直觉不符的代码，这也是 JavaScript 的一个重要设计缺陷。ES6 中为了解决这种非线性的缺陷写法，引入了块级作用域并配合 let、const 关键字食用，来避免这种设计上的缺陷。

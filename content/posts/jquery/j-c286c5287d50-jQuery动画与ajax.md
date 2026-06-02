@@ -2,7 +2,7 @@
 title: "jQuery动画与ajax"
 date: 2017-05-26
 slug_jianshu: c286c5287d50
-tags: []
+tags: ["jQuery", "源码解读", "Vue"]
 state: open
 source: "https://www.jianshu.com/p/c286c5287d50"
 source_kind: jianshu

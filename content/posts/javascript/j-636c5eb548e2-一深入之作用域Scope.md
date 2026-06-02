@@ -2,7 +2,7 @@
 title: "一、深入之作用域（Scope）"
 date: 2017-06-06
 slug_jianshu: 636c5eb548e2
-tags: []
+tags: ["作用域"]
 state: open
 source: "https://www.jianshu.com/p/636c5eb548e2"
 source_kind: jianshu

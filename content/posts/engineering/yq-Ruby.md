@@ -1,8 +1,7 @@
 ---
 title: "Ruby"
 date: 2022-10-15
-tags: []
-source_kind: yuque
+tags: ["Ruby"]
 ---
 
 ## 数据库相关

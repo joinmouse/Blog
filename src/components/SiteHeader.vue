@@ -7,10 +7,10 @@ import { RouterLink } from 'vue-router';
     <RouterLink to="/" class="brand">
       <span class="brand-dot" />
       <span class="brand-name">joinmouse</span>
-      <span class="brand-sub">/ Blog</span>
     </RouterLink>
     <nav class="nav">
-      <RouterLink to="/" exact-active-class="active">Posts</RouterLink>
+      <RouterLink to="/" exact-active-class="active">Blog</RouterLink>
+      <RouterLink to="/projects" active-class="active">Projects</RouterLink>
       <RouterLink to="/life" active-class="active">Life</RouterLink>
       <RouterLink to="/about" active-class="active">About</RouterLink>
     </nav>

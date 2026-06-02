@@ -1,8 +1,7 @@
 ---
 title: "浏览器消息队列和事件循环系统"
 date: 2020-06-15
-tags: []
-source_kind: yuque
+tags: ["事件循环"]
 ---
 
 和 JavaScript 异步编程(1): 理解回调两篇文章介绍过 UI 线程(渲染线程)的工作模式。

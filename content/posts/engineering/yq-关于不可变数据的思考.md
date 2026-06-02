@@ -1,8 +1,7 @@
 ---
 title: "关于不可变数据的思考"
 date: 2020-02-10
-tags: []
-source_kind: yuque
+tags: ["函数式编程"]
 ---
 
 ## 可变数据

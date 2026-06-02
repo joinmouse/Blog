@@ -1,8 +1,7 @@
 ---
 title: "解读 | document.readyState"
 date: 2022-06-15
-tags: []
-source_kind: yuque
+tags: ["DOM", "React"]
 ---
 
 关于页面的加载状态我们经常听到 load、DOMContentLoaded 等各种事件，总是很难记住他们的具体含义。最近了解了 `document.readyState` 这个 API，觉得写的很好，就分享在下面。

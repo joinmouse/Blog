@@ -1,8 +1,7 @@
 ---
 title: "Monorepo 探索"
 date: 2022-12-10
-tags: []
-source_kind: yuque
+tags: ["Monorepo"]
 ---
 
 ## 1、Monorepo 概念
@@ -114,7 +113,7 @@ import {method} from '@my-scope/lib';
 ```
 
 ```yaml
-# pnpm-workspace.yaml
+## pnpm-workspace.yaml
 packages:
   - 'packages/*'
 ```

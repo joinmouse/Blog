@@ -1,8 +1,7 @@
 ---
-title: "JavaScript 运行机制 (): 执行上下文"
+title: "JavaScript 运行机制 — 执行上下文"
 date: 2021-02-15
-tags: []
-source_kind: yuque
+tags: ["JS深入浅出"]
 ---
 
 这篇文章主要介绍执行上下文相关的内容，只有理解了 JavaScript 的执行上下文，才能更好的理解 JavaScript 语言本身，比如后面的变量提升、作用域和闭包等。

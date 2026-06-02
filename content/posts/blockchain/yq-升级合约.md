@@ -1,8 +1,7 @@
 ---
 title: "升级合约"
 date: 2024-05-10
-tags: []
-source_kind: yuque
+tags: ["智能合约"]
 ---
 
 Solidity 合约部署在链上之后，代码是不可变的（immutable）。这样既有优点，也有缺点：

@@ -2,7 +2,7 @@
 title: "从JS作用域来看ES6中的let"
 date: 2018-03-26
 slug_jianshu: 3a4af0ec3d16
-tags: []
+tags: ["作用域", "ES6"]
 state: open
 source: "https://www.jianshu.com/p/3a4af0ec3d16"
 source_kind: jianshu

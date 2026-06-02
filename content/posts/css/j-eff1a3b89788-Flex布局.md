@@ -2,7 +2,7 @@
 title: "Flex布局"
 date: 2017-08-17
 slug_jianshu: eff1a3b89788
-tags: []
+tags: ["CSS布局", "Flex"]
 state: open
 source: "https://www.jianshu.com/p/eff1a3b89788"
 source_kind: jianshu
