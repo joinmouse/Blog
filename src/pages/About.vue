@@ -30,7 +30,6 @@
       </li>
     </ul>
 
-    <p class="sig">— joinmouse, Hangzhou</p>
   </section>
 </template>
 
