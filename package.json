@@ -8,14 +8,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-search-index.mjs && vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=joinmouse --branch=master --commit-dirty=true"
   },
   "dependencies": {
-    "minisearch": "^7.2.0",
     "vue": "^3.5.35",
     "vue-router": "^5.0.7"
   },
