@@ -78,24 +78,6 @@ export default defineConfig(async () => {
         '@content': path.resolve(__dirname, 'content'),
       },
     },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (!id.includes('node_modules')) return;
-            if (id.includes('/vue/') || id.includes('/vue-router/')) return 'framework';
-            if (
-              id.includes('/markdown-it')
-              || id.includes('/@shikijs/')
-              || id.includes('/unplugin-vue-markdown')
-            ) {
-              return 'markdown';
-            }
-            return 'vendor';
-          },
-        },
-      },
-    },
     server: {
       port: 5173,
     },
