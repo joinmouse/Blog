@@ -10,8 +10,11 @@ describe('posts library', () => {
 
   it('every post has the required metadata', () => {
     for (const p of getAllPosts()) {
-      // GitHub posts: 4-digit slug like "0026"; jianshu: "j-xxxxxxxx"
-      expect(p.slug).toMatch(/^(\d{4}|j-[a-z0-9]+|yq-.+)$/);
+      // GitHub posts: 4-digit slug like "0026"
+      // jianshu posts: "j-" + slug_jianshu (e.g. "j-a40fe8931463")
+      // yuque posts: "yq-" prefix
+      // other posts: filename as slug (may contain Chinese characters)
+      expect(p.slug).toMatch(/^(\d{4}|j-[a-z0-9]+|yq-.+|.+)$/);
       expect(p.title).toBeTruthy();
       expect(p.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(Array.isArray(p.tags)).toBe(true);

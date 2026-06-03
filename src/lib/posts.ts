@@ -45,13 +45,19 @@ const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
   const category = parts.length > postsIdx + 2 ? parts[postsIdx + 1] : undefined;
   // slug 规则：去掉路径和 .md 后缀。
   //   GitHub Issues 来源：0001-xxx.md → "0001"（保留四位数字前缀，去掉描述）
-  //   简书来源：         j-xxxxx-标题.md → "j-xxxxx"（只取 j-前缀+slug 部分）
+  //   简书来源：         文件名可以是中文，使用 frontmatter 中的 slug_jianshu 生成 "j-xxxx" slug
+  //   语雀来源：         yq-xxx.md → "yq-xxx"
+  //   其他：             直接使用文件名作为 slug（支持中文）
   const filename = parts[parts.length - 1];
   const slug = /^\d+-/.test(filename)
     ? filename.match(/^\d+/)![0]
     : /^j-/.test(filename)
       ? filename.match(/^j-[A-Za-z0-9]+/)![0]
-      : filename;
+      : /^yq-/.test(filename)
+        ? filename.match(/^yq-.+/)![0]
+        : fm.slug_jianshu
+          ? `j-${fm.slug_jianshu}`
+          : filename;
   // date 可能是 string ("2018-01-25") 或 Date 对象（YAML 解析后）。
   // 统一规整为 YYYY-MM-DD 字符串。
   let date = '';
