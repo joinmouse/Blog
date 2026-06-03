@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './pages/Home.vue';
-import Post from './pages/Post.vue';
-import Tag from './pages/Tag.vue';
-import About from './pages/About.vue';
-import Life from './pages/Life.vue';
-import Projects from './pages/Projects.vue';
+
+const Home = () => import('./pages/Home.vue');
+const Post = () => import('./pages/Post.vue');
+const Tag = () => import('./pages/Tag.vue');
+const About = () => import('./pages/About.vue');
+const Life = () => import('./pages/Life.vue');
+const Projects = () => import('./pages/Projects.vue');
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
