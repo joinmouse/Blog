@@ -1,23 +1,10 @@
 /**
- * Loads all markdown posts at build time via import.meta.glob.
- * Each .md file is compiled by unplugin-vue-markdown into a Vue component,
- * with frontmatter exposed as `frontmatter` on the module.
+ * Post metadata is loaded from a build-time manifest (posts-manifest.json).
+ * Post components are lazy-loaded via import.meta.glob so they are split
+ * into their own chunks instead of being bundled into the main JS bundle.
  */
 
 import type { Component } from 'vue';
-
-interface MarkdownModule {
-  default: Component;
-  // unplugin-vue-markdown 会将 frontmatter 字段作为命名导出
-  frontmatter?: Record<string, any>;
-  title?: string;
-  date?: string;
-  issue_number?: number;
-  tags?: string[];
-  source?: string;
-  state?: string;
-  [key: string]: any;
-}
 
 export interface PostMeta {
   slug: string;
@@ -32,64 +19,47 @@ export interface PostFull extends PostMeta {
   component: Component;
 }
 
-const modules = import.meta.glob<MarkdownModule>('/content/posts/**/*.md', { eager: true });
-
-const posts: PostFull[] = Object.entries(modules).map(([filepath, mod]) => {
-  // unplugin-vue-markdown 在 build 时把 frontmatter 放在 mod.frontmatter，
-  // 但在 vitest 环境下会展平到 mod 顶层。两种都兼容。
-  const fm = (mod.frontmatter as Record<string, any>) || (mod as Record<string, any>);
-  // Extract category from subdirectory (e.g. /content/posts/javascript/xxx.md → "javascript")
-  // Root-level files have no category.
-  const parts = filepath.replace(/\.md$/, '').split('/');
-  const postsIdx = parts.indexOf('posts');
-  const category = parts.length > postsIdx + 2 ? parts[postsIdx + 1] : undefined;
-  // slug 规则：去掉路径和 .md 后缀。
-  //   GitHub Issues 来源：0001-xxx.md → "0001"（保留四位数字前缀，去掉描述）
-  //   简书来源：         文件名可以是中文，使用 frontmatter 中的 slug_jianshu 生成 "j-xxxx" slug
-  //   语雀来源：         yq-xxx.md → "yq-xxx"
-  //   其他：             直接使用文件名作为 slug（支持中文）
-  const filename = parts[parts.length - 1];
-  const slug = /^\d+-/.test(filename)
-    ? filename.match(/^\d+/)![0]
-    : /^j-/.test(filename)
-      ? filename.match(/^j-[A-Za-z0-9]+/)![0]
-      : /^yq-/.test(filename)
-        ? filename.match(/^yq-.+/)![0]
-        : fm.slug_jianshu
-          ? `j-${fm.slug_jianshu}`
-          : filename;
-  // date 可能是 string ("2018-01-25") 或 Date 对象（YAML 解析后）。
-  // 统一规整为 YYYY-MM-DD 字符串。
-  let date = '';
-  const rawDate = fm.date;
-  if (rawDate instanceof Date) {
-    date = rawDate.toISOString().slice(0, 10);
-  } else if (typeof rawDate === 'string') {
-    date = rawDate.slice(0, 10);
-  }
-  return {
-    slug,
-    title: fm.title || slug,
-    date,
-    tags: Array.isArray(fm.tags) ? fm.tags : [],
-    source: fm.source,
-    category,
-    component: mod.default,
-  };
-});
-
-// Sort by date desc (newest first); same-date items by slug desc as tiebreaker
-posts.sort((a, b) => {
-  if (a.date !== b.date) return b.date.localeCompare(a.date);
-  return b.slug.localeCompare(a.slug);
-});
-
-export function getAllPosts(): PostMeta[] {
-  return posts.map(({ component, ...meta }) => meta);
+interface ManifestEntry extends PostMeta {
+  filepath: string;
 }
 
-export function getPostBySlug(slug: string): PostFull | undefined {
+// --- Metadata from manifest (tiny, synchronous) ---
+
+import manifest from './posts-manifest.json';
+
+const posts: PostMeta[] = manifest as ManifestEntry[];
+
+// --- Lazy component loading ---
+
+const postModules = import.meta.glob('/content/posts/**/*.md');
+
+// Build filepath -> importFn map (strip leading / to match manifest format)
+const filepathToImport: Record<string, () => Promise<{ default: Component }>> = {};
+for (const [key, importFn] of Object.entries(postModules)) {
+  filepathToImport[key.replace(/^\//, '')] = importFn as () => Promise<{ default: Component }>;
+}
+
+// --- Public API ---
+
+export function getAllPosts(): PostMeta[] {
+  return posts;
+}
+
+export function getPostMeta(slug: string): PostMeta | undefined {
   return posts.find((p) => p.slug === slug);
+}
+
+export async function getPostBySlug(slug: string): Promise<PostFull | undefined> {
+  const entry = (manifest as ManifestEntry[]).find((p) => p.slug === slug);
+  if (!entry || !entry.filepath) return undefined;
+
+  const importFn = filepathToImport[entry.filepath];
+  if (!importFn) return undefined;
+
+  const mod = await importFn();
+  const component = (mod as any).default || mod;
+
+  return { ...entry, component: component as Component };
 }
 
 export function getAllTags(): { tag: string; count: number }[] {

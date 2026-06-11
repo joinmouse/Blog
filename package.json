@@ -9,9 +9,12 @@
   "engineStrict": true,
   "scripts": {
     "dev": "vite",
+    "predev": "node scripts/generate-manifest.mjs",
     "build": "vue-tsc --noEmit && vite build",
+    "prebuild": "node scripts/generate-manifest.mjs",
     "preview": "vite preview",
     "test": "vitest run",
+    "pretest": "node scripts/generate-manifest.mjs",
     "test:watch": "vitest",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=joinmouse --branch=master --commit-dirty=true"
   },

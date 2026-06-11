@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, shallowRef, watch } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
-import { getPostBySlug } from '../lib/posts';
+import { getPostBySlug, type PostFull } from '../lib/posts';
 import TagPill from '../components/TagPill.vue';
 
 const categoryLabels: Record<string, string> = {
@@ -20,8 +20,19 @@ const categoryLabels: Record<string, string> = {
 };
 
 const route = useRoute();
-const slug = computed(() => route.params.slug as string);
-const post = computed(() => getPostBySlug(slug.value));
+const post = shallowRef<PostFull | undefined>(undefined);
+const loading = ref(true);
+
+watch(
+  () => route.params.slug,
+  async (slug) => {
+    loading.value = true;
+    post.value = undefined;
+    post.value = await getPostBySlug(slug as string);
+    loading.value = false;
+  },
+  { immediate: true },
+);
 
 function formatDate(d: string): string {
   if (!d) return '';
@@ -35,7 +46,8 @@ function formatDate(d: string): string {
 </script>
 
 <template>
-  <article v-if="post" class="article">
+  <div v-if="loading" class="loading">Loading...</div>
+  <article v-else-if="post" class="article">
     <header class="post-header">
       <div class="back">
         <RouterLink to="/">← All posts</RouterLink>
@@ -187,6 +199,13 @@ function formatDate(d: string): string {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.loading {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--text-faint);
+  font-size: 14px;
 }
 
 @media (max-width: 600px) {

@@ -8,3 +8,4 @@ dist
 .idea
 .playwright-data
 .obsidian
+src/lib/posts-manifest.json

@@ -27,20 +27,21 @@ describe('posts library', () => {
     expect(dates).toEqual(sorted);
   });
 
-  it('looks up a GitHub post by slug', () => {
-    const post = getPostBySlug('0026');
+  it('looks up a GitHub post by slug', async () => {
+    const post = await getPostBySlug('0026');
     expect(post).toBeDefined();
     expect(post!.title).toContain('闭包');
   });
 
-  it('looks up a jianshu post by slug', () => {
-    const post = getPostBySlug('j-0fc76e1b1558');
+  it('looks up a jianshu post by slug', async () => {
+    const post = await getPostBySlug('j-0fc76e1b1558');
     expect(post).toBeDefined();
     expect(post).toBeTruthy();
   });
 
-  it('returns undefined for unknown slug', () => {
-    expect(getPostBySlug('9999')).toBeUndefined();
+  it('returns undefined for unknown slug', async () => {
+    const result = await getPostBySlug('9999');
+    expect(result).toBeUndefined();
   });
 
   it('aggregates tags with correct counts', () => {

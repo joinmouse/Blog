@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { mount, flushPromises } from '@vue/test-utils';
 import { createRouter, createMemoryHistory } from 'vue-router';
 import Post from '../src/pages/Post.vue';
@@ -20,9 +20,11 @@ describe('Post page', () => {
     await router.isReady();
 
     const wrapper = mount(Post, { global: { plugins: [router] } });
-    await flushPromises();
 
-    expect(wrapper.text()).toContain('闭包');
+    await vi.waitFor(() => {
+      expect(wrapper.text()).toContain('闭包');
+    }, { timeout: 5000 });
+
     expect(wrapper.find('article.article').exists()).toBe(true);
   });
 
@@ -32,7 +34,10 @@ describe('Post page', () => {
     await router.isReady();
 
     const wrapper = mount(Post, { global: { plugins: [router] } });
-    await flushPromises();
+
+    await vi.waitFor(() => {
+      expect(wrapper.text()).not.toBe('Loading...');
+    }, { timeout: 5000 });
 
     // post 0026 is dated 2019-08-21 → "August 21, 2019"
     expect(wrapper.text()).toMatch(/August 21, 2019/);
