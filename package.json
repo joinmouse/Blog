@@ -19,15 +19,15 @@
     "deploy": "npm run build && wrangler pages deploy dist --project-name=joinmouse --branch=master --commit-dirty=true"
   },
   "dependencies": {
-    "vue": "3.5.41",
-    "vue-router": "5.2.0"
+    "vue": "3.5.42",
+    "vue-router": "5.3.0"
   },
   "devDependencies": {
     "@shikijs/markdown-it": "4.4.3",
     "@vitejs/plugin-vue": "6.0.8",
-    "@vue/test-utils": "2.4.11",
-    "happy-dom": "20.11.6",
-    "markdown-it": "15.0.0",
+    "@vue/test-utils": "2.5.0",
+    "happy-dom": "20.12.0",
+    "markdown-it": "15.0.1",
     "markdown-it-anchor": "9.2.1",
     "shiki": "4.4.3",
     "typescript": "7.0.2",
@@ -35,6 +35,6 @@
     "vite": "8.2.2",
     "vitest": "4.1.11",
     "vue-tsc": "3.3.11",
-    "wrangler": "4.125.0"
+    "wrangler": "4.128.0"
   }
 }
