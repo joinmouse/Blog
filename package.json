@@ -23,18 +23,18 @@
     "vue-router": "5.4.0"
   },
   "devDependencies": {
-    "@shikijs/markdown-it": "4.5.0",
+    "@shikijs/markdown-it": "4.6.0",
     "@vitejs/plugin-vue": "6.0.10",
     "@vue/test-utils": "2.5.1",
     "happy-dom": "21.0.4",
     "markdown-it": "15.0.3",
     "markdown-it-anchor": "10.0.0",
-    "shiki": "4.5.0",
+    "shiki": "4.6.0",
     "typescript": "7.0.2",
     "unplugin-vue-markdown": "32.1.1",
     "vite": "8.3.5",
-    "vitest": "5.0.5",
-    "vue-tsc": "3.3.13",
-    "wrangler": "4.156.0"
+    "vitest": "5.1.0",
+    "vue-tsc": "3.3.14",
+    "wrangler": "4.157.0"
   }
 }
