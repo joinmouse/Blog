@@ -19,7 +19,7 @@
     "deploy": "npm run build && wrangler pages deploy dist --project-name=joinmouse --branch=master --commit-dirty=true"
   },
   "dependencies": {
-    "vue": "3.5.45",
+    "vue": "3.5.46",
     "vue-router": "5.5.1"
   },
   "devDependencies": {
@@ -33,8 +33,8 @@
     "typescript": "7.0.2",
     "unplugin-vue-markdown": "32.1.1",
     "vite": "8.3.8",
-    "vitest": "5.1.0",
+    "vitest": "5.1.1",
     "vue-tsc": "3.3.14",
-    "wrangler": "4.164.0"
+    "wrangler": "4.168.0"
   }
 }
